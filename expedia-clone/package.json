@@ -2,6 +2,7 @@
   "name": "expedia-clone",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "dependencies": {
     "@chakra-ui/react": "^2.3.7",
     "@emotion/react": "^11.10.5",
@@ -21,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts node server.js start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
