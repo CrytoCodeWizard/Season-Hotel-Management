@@ -1,0 +1,17 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "profile": [
+    {
+      "id": 1,
+      "name": "Dhanraj Jagtap",
+      "email": "jagtapdhanraj116@gmail.com",
+      "password":"Pass123"
+    }
+  ]
+}
