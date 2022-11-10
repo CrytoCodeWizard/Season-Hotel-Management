@@ -2,11 +2,12 @@ import React from 'react'
 
 import { Heading, Image, Text, Button, Box, Input, Center, Stack } from '@chakra-ui/react'
 import HomePageSlider from '../Components/HomePageSlider';
-
+import SearchBar from '../Components/SearchBar'
 
 const HomePage = () => {
     return (
         <div>
+            <br />
             <Center>
                 <Box bg={'red'}
                     w='80%'
