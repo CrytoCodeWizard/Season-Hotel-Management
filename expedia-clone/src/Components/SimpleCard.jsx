@@ -12,7 +12,7 @@ import React from "react";
 const SimpleCard = (props) => {
   const { src, title, city, description, rating, price, text1 } = props;
   return (
-    <Box>
+    <Box boxShadow={'md'}>
       <Center>
         <Stack w="80%" direction={["column", "row"]} spacing="24px">
           <Box padding="auto" alignItems="center" rowSpan={2} colSpan={1}>
