@@ -22,7 +22,6 @@ const getHotels = (payload) => (dispatch) => {
   return axios
     .get(`https://636b1db9b10125b78feba23b.mockapi.io/${payload.location}`)
     .then((r) => {
-      console.log(payload)
       payload = { ...payload, hotels: r.data };
       dispatch(getHotelsSuccess(payload));
     })

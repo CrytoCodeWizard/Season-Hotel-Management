@@ -275,7 +275,6 @@ const SearchBar = () => {
           </Box>
         </Flex>
       </Box>
-      <Link to='/checkout'>checkout</Link>
     </div>
   );
 };

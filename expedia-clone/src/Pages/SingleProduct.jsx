@@ -4,7 +4,6 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import SPImages from '../Components/SPImages';
 import Overview from '../Components/Overview';
 import Rooms from '../Components/Rooms';
-
 const SingleProduct = () => {
     return (
       <Box bg="#F8F5F4" h="auto" w="100%">

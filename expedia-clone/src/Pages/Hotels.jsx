@@ -22,8 +22,6 @@ const Hotels = () => {
   const hotels = useSelector((state) => state.hotels);
   const [filtered, setFiltered] = useState([]);
   const [price, setPrice] = useState(0);
-  const rooms = useSelector((state) => state.rooms);
-  console.log(rooms)
   useEffect(() => {
     let p;
     if (price === 0) {
@@ -125,8 +123,9 @@ const Hotels = () => {
             {filtered.length > 0 &&
               filtered.map((item) => {
                 return (
-                  <GridItem>
+                  <GridItem key={item.id}>
                     <SimpleCard
+                      id={item.id}
                       src={item.img1}
                       title={item.heading1}
                       city={item.city}
@@ -144,7 +143,6 @@ const Hotels = () => {
       <br />
       <Footer></Footer>
     </>
-
   );
 };
 

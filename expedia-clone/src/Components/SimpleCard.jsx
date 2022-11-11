@@ -9,15 +9,12 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 const SimpleCard = (props) => {
   const { id, src, title, city, description, rating, price, text1 } = props;
   const navigate = useNavigate();
-
-  const handleSingleProduct = (city, id) => {
+  const handleSingleProduct = (id) => {
     navigate(`/hotels/${id}`);
   }
-
   return (
 
     <Box
@@ -26,9 +23,8 @@ const SimpleCard = (props) => {
       borderRadius="10px"
       boxShadow={"md"}
       padding="20px 0px"
-      onClick={() => handleSingleProduct(city, id)}
+      onClick={() => handleSingleProduct(id)}
     >
-
       <Center>
         <Stack w="80%" direction={["column", "row"]} spacing="24px">
           <Box padding="auto" alignItems="center" rowSpan={2} colSpan={1}>
