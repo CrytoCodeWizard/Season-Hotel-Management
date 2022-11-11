@@ -2,11 +2,12 @@ import React from 'react'
 import { Heading, Box, Text, Stack, Image, Link, Button, Input, Checkbox, Select, Flex, Spacer } from '@chakra-ui/react'
 import { BsFillCloudCheckFill } from "react-icons/bs";
 
+
+
 const CheckoutPage = () => {
     return (
         <div style={{ width: '100%', height: 'auto', }}>
             <div style={{ display: 'grid', }}>
-
                 <Box bg={'white'} m='auto' w='80%'>
                     <Heading m='2' textAlign='left'>Review and book</Heading>
                 </Box>
@@ -193,7 +194,7 @@ const CheckoutPage = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        {/* second Box */}
+
                         <Box h='710px' bg={'white'} w='500px' textAlign={'left'} marginLeft={'30px'}>
                             <Image w={'100%'} src='https://images.trvl-media.com/hotels/2000000/1360000/1351900/1351876/1ac59945_l.jpg' />
                             <Box margin={'25px'}>
@@ -260,3 +261,5 @@ const CheckoutPage = () => {
 }
 
 export default CheckoutPage
+
+

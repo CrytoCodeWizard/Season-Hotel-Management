@@ -12,6 +12,7 @@ const Hotels = () => {
           return (
             <GridItem>
               <SimpleCard
+                id={item.id}
                 src={item.img1}
                 title={item.heading1}
                 city={item.city}

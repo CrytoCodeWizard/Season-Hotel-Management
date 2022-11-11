@@ -5,6 +5,8 @@ import Hotels from "./Hotels";
 import SingleProduct from "./SingleProduct";
 import CheckoutPage from "./CheckoutPage";
 import CreateHotel from "./CreateHotal";
+import Pagenot from "./Pagenot";
+
 const MainRoutes = () => {
   return (
     <div>
@@ -14,7 +16,7 @@ const MainRoutes = () => {
         <Route path="/hotels/:id" element={<SingleProduct />}></Route>
         <Route path="/checkout" element={<CheckoutPage />}></Route>
         <Route path="/addhotel" element={<CreateHotel />}></Route>
-        <Route path="*" element={<div>Page not Found</div>}></Route>
+        <Route path="*" element={<Pagenot />}></Route>
       </Routes>
     </div>
   );
