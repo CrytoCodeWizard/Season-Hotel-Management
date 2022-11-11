@@ -17,16 +17,19 @@ import {
   PopoverBody,
   Button,
   useDisclosure,
+  Wrap,
 } from "@chakra-ui/react";
 import { BsFillGeoAltFill } from "react-icons/bs";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getHotels } from "../Redux/AppContext/action";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const [adults, setAdults] = useState(1);
   const [child, setChild] = useState(0);
   const [room, setRoom] = useState(1);
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
   const { onClose } = useDisclosure();
   const [location, setLocation] = useState("");
   const Room = () => {
@@ -90,18 +93,20 @@ const SearchBar = () => {
   const handleSearch = () => {
     const payload = {
       location: location,
-      room: room,
+      rooms: room,
       adults: adults,
       child: child,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
     };
     dispatch(getHotels(payload));
-    setLocation("");
     navigate("/hotels");
   };
   return (
     <div>
       <Box
-        width={"70%"}
+        bg={"white"}
+        width={"80%"}
         margin="auto"
         marginTop={"20px"}
         border={"1px solid lightgrey"}
@@ -110,7 +115,12 @@ const SearchBar = () => {
       >
         <Flex flexDirection={"column"}>
           <Box>
-            <Flex textAlign={"center"} justifyContent="center" gap={10}>
+            <Flex
+              textAlign={"center"}
+              justifyContent="center"
+              gap={10}
+              wrap="wrap"
+            >
               <Text>Stays</Text>
               <Text>Flights</Text>
               <Text>Cars</Text>
@@ -118,63 +128,81 @@ const SearchBar = () => {
               <Text>Things to do</Text>
             </Flex>
           </Box>
+          <br />
           <Box alignItems={"center"}>
-            <InputGroup gap={"10px"}>
-              <InputLeftElement
-                pointerEvents="none"
-                alignItems={"center"}
-                margin="6px 0px"
-                children={<Icon w={"25px"} h={"25px"} as={BsFillGeoAltFill} />}
-              />
+            <InputGroup
+              gap={"10px"}
+              display="flex"
+              justifyContent={"center"}
+              flexWrap={"wrap"}
+            >
+              <InputGroup width={"400px"}>
+                <InputLeftElement
+                  pointerEvents="none"
+                  alignItems={"center"}
+                  margin="6px 0px"
+                  children={
+                    <Icon w={"25px"} h={"25px"} as={BsFillGeoAltFill} />
+                  }
+                />
+                <Input
+                  bg={"white"}
+                  type="text"
+                  placeholder="Going to"
+                  height="50px"
+                  alignItems={"center"}
+                  fontSize={"17px"}
+                  textAlign={"left"}
+                  padding="0px 35px"
+                  borderRadius={"10px"}
+                  border="1px solid"
+                  value={location}
+                  onChange={(e) => {
+                    setLocation(e.target.value);
+                  }}
+                />
+              </InputGroup>
+
               <Input
-                type="text"
-                placeholder="Going to"
-                width={"100%"}
-                height="50px"
-                alignItems={"center"}
-                fontSize={"17px"}
-                textAlign={"left"}
-                padding="0px 35px"
-                borderRadius={"10px"}
-                border="1px solid"
-                value={location}
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-              />
-              <Input
+                bg={"white"}
                 type={"date"}
                 height="50px"
-                width={"40%"}
+                width={"120px"}
                 padding="0px"
                 alignItems={"center"}
                 fontSize={"15px"}
                 borderRadius={"10px"}
                 border="1px solid"
                 placeholder="Check In"
+                value={checkInDate}
+                onChange={(e) => setCheckInDate(e.target.value)}
               ></Input>
               <Input
-                width={"40%"}
+                bg={"white"}
+                width={"120px"}
                 padding="0px"
                 type={"date"}
                 height="50px"
                 alignItems={"center"}
-                fontSize={"17px"}
+                fontSize={"15px"}
                 borderRadius={"10px"}
                 border="1px solid"
                 placeholder="Check In"
+                value={checkOutDate}
+                onChange={(e) => setCheckOutDate(e.target.value)}
               ></Input>
               <Flex
                 _focus={{ borderColor: "blue" }}
                 border={"1px solid "}
                 focusBorderColor="red"
                 height="50px"
-                width={"50%"}
+                width={"200px"}
                 borderRadius={"10px"}
                 gap={4}
                 justifyContent="center"
+                bg={"white"}
               >
-                <Popover>
+                <Popover bg={"white"}>
                   <PopoverTrigger>
                     <Box>
                       <Flex height="100%" flexDirection={"column"}>
@@ -247,6 +275,7 @@ const SearchBar = () => {
           </Box>
         </Flex>
       </Box>
+      <Link to='/checkout'>checkout</Link>
     </div>
   );
 };

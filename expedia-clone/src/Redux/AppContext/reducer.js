@@ -3,8 +3,8 @@ const initialState = {
   hotels: [],
   checkInDate: "",
   checkOutDate: "",
-  rooms: 0,
-  adults: 0,
+  rooms: 1,
+  adults: 1,
   child: 0,
   isLoading: false,
   isError: false,
@@ -26,6 +26,8 @@ export const reducer = (state = initialState, action) => {
         rooms: payload.rooms,
         adults: payload.adults,
         child: payload.child,
+        checkInDate: payload.checkInDate,
+        checkOutDate: payload.checkOutDate,
       };
     case types.GET_HOTELS_FAILURE:
       return {
