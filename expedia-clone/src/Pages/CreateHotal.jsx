@@ -58,7 +58,7 @@
 //           <Button colorScheme='blue' onSubmit={handleSubmit}>Submit</Button>
 
 //         </Stack>
-      
+
 //     </Container>
 // )
 // }
@@ -87,13 +87,12 @@ const CreateHotel = () => {
             rating,
             description
         }
-
         axios
             .post(`https://636b1db9b10125b78feba23b.mockapi.io/${location}`, obj)
             .then(() => {
 
             }).catch(() => {
-             alert("Page Not Found")
+                alert("Page Not Found")
             })
     }
 
@@ -115,3 +114,4 @@ const CreateHotel = () => {
 }
 
 export default CreateHotel
+
