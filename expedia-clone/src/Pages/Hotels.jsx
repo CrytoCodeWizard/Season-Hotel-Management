@@ -14,7 +14,7 @@ const Hotels = () => {
               <SimpleCard
                 src={item.img1}
                 title={item.heading1}
-                city={item.headig2}
+                city={item.city}
                 description={item.text1}
                 text1={item.text2}
                 rating={item.rating}

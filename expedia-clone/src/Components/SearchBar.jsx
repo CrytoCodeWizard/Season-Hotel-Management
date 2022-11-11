@@ -22,6 +22,7 @@ import { BsFillGeoAltFill } from "react-icons/bs";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getHotels } from "../Redux/AppContext/action";
+import { useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const [adults, setAdults] = useState(1);
   const [child, setChild] = useState(0);
@@ -85,6 +86,7 @@ const SearchBar = () => {
     );
   };
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSearch = () => {
     const payload = {
       location: location,
@@ -94,6 +96,7 @@ const SearchBar = () => {
     };
     dispatch(getHotels(payload));
     setLocation("");
+    navigate("/hotels");
   };
   return (
     <div>

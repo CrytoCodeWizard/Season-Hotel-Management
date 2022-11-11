@@ -12,9 +12,11 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import HomePageSlider from "../Components/HomePageSlider";
+import SearchBar from "../Components/SearchBar";
 const HomePage = () => {
   return (
     <div>
+      <SearchBar />
       <br />
       <Center>
         <Box
