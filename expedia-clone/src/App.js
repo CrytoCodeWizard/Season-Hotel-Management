@@ -1,6 +1,7 @@
 import "./App.css";
 
 
+
 import Footer from "./Components/Footer";
 import NavBar from "./Components/navbar";
 import SearchBar from "./Components/SearchBar";
