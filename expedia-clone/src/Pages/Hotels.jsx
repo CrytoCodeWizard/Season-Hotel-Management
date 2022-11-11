@@ -144,6 +144,7 @@ const Hotels = () => {
       <br />
       <Footer></Footer>
     </>
+
   );
 };
 
