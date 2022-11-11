@@ -4,7 +4,7 @@ import { BsFillCloudCheckFill } from "react-icons/bs";
 
 const CheckoutPage = () => {
     return (
-        <div style={{ width: '100%', height: 'auto' }}>
+        <div style={{ width: '100%', height: 'auto', }}>
             <div style={{ display: 'grid', }}>
 
                 <Box bg={'white'} m='auto' w='80%'>
