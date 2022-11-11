@@ -36,7 +36,7 @@ const HomePageSlider = () => {
   }, []);
 
   return (
-    <Center>
+    <Center borderRadius={"10px"}>
       <Box w={"80%"}>
         <Carousel
           swipeable={false}
