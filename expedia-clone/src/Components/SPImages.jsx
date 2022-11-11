@@ -1,5 +1,5 @@
-import { Box, HStack, Img, VStack } from '@chakra-ui/react';
-import React from 'react'
+import { Box, HStack, Img, VStack } from "@chakra-ui/react";
+import React from "react";
 
 const SPImages = () => {
   return (
@@ -51,6 +51,6 @@ const SPImages = () => {
       </HStack>
     </Box>
   );
-}
+};
 
-export default SPImages
+export default SPImages;

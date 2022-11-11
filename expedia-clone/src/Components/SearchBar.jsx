@@ -1,10 +1,8 @@
 import React from "react";
 import {
   Box,
-  Center,
   Flex,
   Text,
-  Stack,
   InputGroup,
   InputLeftElement,
   Input,
@@ -18,26 +16,43 @@ import {
   PopoverCloseButton,
   PopoverBody,
   Button,
-  Checkbox,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BsFillGeoAltFill, BsFillPersonFill } from "react-icons/bs";
+import { BsFillGeoAltFill } from "react-icons/bs";
 import { useState } from "react";
-import AdultCount from "./AdultCount";
+import { useDispatch } from "react-redux";
+import { getHotels } from "../Redux/AppContext/action";
 const SearchBar = () => {
-  const [adults, setAdults] = useState(0);
+  const [adults, setAdults] = useState(1);
   const [child, setChild] = useState(0);
+  const [room, setRoom] = useState(1);
   const { onClose } = useDisclosure();
+  const [location, setLocation] = useState("");
   const Room = () => {
     return (
       <>
-        <Text>Room 1</Text>
+        <Flex justifyContent={"space-between"}>
+          <Box>Room</Box>
+          <Flex gap={2} alignItems={"center"}>
+            <Button
+              disabled={room === 1}
+              onClick={() => setRoom(room - 1)}
+              borderRadius={"50%"}
+            >
+              -
+            </Button>
+            <Text>{room}</Text>
+            <Button onClick={() => setRoom(room + 1)} borderRadius={"50%"}>
+              +
+            </Button>
+          </Flex>
+        </Flex>
         <br />
         <Flex justifyContent={"space-between"}>
           <Box>Adults</Box>
           <Flex gap={2} alignItems={"center"}>
             <Button
-              disabled={adults === 0}
+              disabled={adults === 1}
               onClick={() => setAdults(adults - 1)}
               borderRadius={"50%"}
             >
@@ -68,6 +83,17 @@ const SearchBar = () => {
         </Flex>
       </>
     );
+  };
+  const dispatch = useDispatch();
+  const handleSearch = () => {
+    const payload = {
+      location: location,
+      room: room,
+      adults: adults,
+      child: child,
+    };
+    dispatch(getHotels(payload));
+    setLocation("");
   };
   return (
     <div>
@@ -108,6 +134,10 @@ const SearchBar = () => {
                 padding="0px 35px"
                 borderRadius={"10px"}
                 border="1px solid"
+                value={location}
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                }}
               />
               <Input
                 type={"date"}
@@ -156,7 +186,7 @@ const SearchBar = () => {
                         </Box>
                         <Flex gap={4}>
                           <Text padding={"0px"} margin={"0px"}>
-                            room 1
+                            room {room}
                           </Text>
                           <Text padding={"0px"} margin={"0px"}>
                             {adults + child} travellers
@@ -199,10 +229,7 @@ const SearchBar = () => {
               </Flex>
             </InputGroup>
           </Box>
-          <Flex justifyContent={"left"}>
-            <Checkbox>Add a flight</Checkbox>
-            <Checkbox>Add a car</Checkbox>
-          </Flex>
+          <br />
           <Box>
             <Button
               w={"30%"}
@@ -210,6 +237,7 @@ const SearchBar = () => {
               bg={"blue.500"}
               _hover={{ bg: "blue.600" }}
               color="white"
+              onClick={handleSearch}
             >
               Search
             </Button>

@@ -1,5 +1,5 @@
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
-import React from 'react'
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import React from "react";
 
 const Rooms = () => {
   return (
@@ -10,12 +10,10 @@ const Rooms = () => {
         </Text>
       </Box>
       <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-              <GridItem w="100%" bg="blue.500" border="red solid 1px">
-                  
-        </GridItem>
+        <GridItem w="100%" bg="blue.500" border="red solid 1px"></GridItem>
       </Grid>
     </Box>
   );
-}
+};
 
-export default Rooms
+export default Rooms;
