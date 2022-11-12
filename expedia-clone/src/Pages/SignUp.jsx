@@ -29,15 +29,54 @@ export default function CreateAccount() {
   const [userName, setUserName] = useState("");
   const [userType, setUserType] = useState("");
 
+  const { userData, successfullyCreated, createAccountError } = useSelector(
+    (state) => {
+      return {
+        userData: state.AuthReducer.userData,
+        successfullyCreated: state.AuthReducer.successfullyCreated,
+        createAccountError: state.AuthReducer.createAccountError,
+      };
+    },
+    shallowEqual
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
   const [isLargerThan992] = useMediaQuery("(min-width: 992px)");
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
   }, []);
+
+  useEffect(() => {
+    if (successfullyCreated) {
+      toast({
+        title: `Account Created Successfull`,
+        status: "success",
+        duration: 1500,
+        position: "top",
+        isClosable: true,
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    }
+  }, [successfullyCreated]);
+
+  useEffect(() => {
+    if (createAccountError) {
+      toast({
+        title: `Something Went Wrong !!!`,
+        status: "error",
+        duration: 1500,
+        position: "top",
+        isClosable: true,
+      });
+    }
+  }, [createAccountError]);
 
   function SendSignInRequest() {
     dispatch(
@@ -48,6 +87,10 @@ export default function CreateAccount() {
         userType: userType,
       })
     );
+    setEmail("");
+    setPassword("");
+    setUserName("");
+    setUserType("");
   }
 
   return (
@@ -76,16 +119,17 @@ export default function CreateAccount() {
           <FormControl
             w={isLargerThan992 ? "30%" : "70%"}
             borderRadius="lg"
-            boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
             p={"3"}
             cursor="pointer"
             mt={5}
+            isRequired
           >
             {/* Name */}
             <FormLabel htmlFor="userName">Enter Your Name</FormLabel>
             <Input
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Enter User Name"
+              value={userName}
               w={"100%"}
               h={"40px"}
               border={`2px solid`}
@@ -100,6 +144,7 @@ export default function CreateAccount() {
               placeholder="Enter Email address"
               w={"100%"}
               h={"40px"}
+              value={email}
               border={`2px solid`}
               type={"email"}
               id="email"
@@ -115,6 +160,7 @@ export default function CreateAccount() {
               h={"40px"}
               border={`2px solid`}
               mb={"8px"}
+              value={userType}
               id="userType"
             >
               <option value="">Choose User Type</option>
@@ -128,6 +174,7 @@ export default function CreateAccount() {
               placeholder="Password"
               w={"100%"}
               h={"40px"}
+              value={password}
               border={`2px solid`}
               type={"password"}
               mb={"8px"}
@@ -167,7 +214,7 @@ export default function CreateAccount() {
 
             <Text mt={"15px"} display="flex" justifyContent={"center"}>
               Already have an account?
-              <Link to={"/signin"} style={{ color: "blue" }}>
+              <Link to={"/login"} style={{ color: "blue" }}>
                 {" "}
                 Sign In
               </Link>
