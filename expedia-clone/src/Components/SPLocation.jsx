@@ -12,7 +12,7 @@ const SPLocation = ({name}) => {
     const handleToggle = () => setShow(!show);
   return (
     <>
-      <Box display="flex" bg="white" my="2rem">
+      <Box display="flex" bg="white" my="2rem" fontSize="0.9rem">
         <Box w="40%" align="initial" p="1rem" my="0">
           <Text fontSize="1.5rem" fontWeight="500">
             About this area
@@ -21,12 +21,11 @@ const SPLocation = ({name}) => {
             Candolim
           </Text>
           <Text>
-            {name} Candolim Goa is located in Gauravaddo, a
-            neighbourhood in Candolim, and is in the entertainment district and
-            near the beach. Fort Aguada is a notable landmark, and the area's
-            natural beauty can be seen at Candolim Beach and Calangute Beach.
-            Travelling with kids? Consider Splashdown Waterpark and Goa Science
-            Centre.
+            {name} Candolim Goa is located in Gauravaddo, a neighbourhood in
+            Candolim, and is in the entertainment district and near the beach.
+            Fort Aguada is a notable landmark, and the area's natural beauty can
+            be seen at Candolim Beach and Calangute Beach. Travelling with kids?
+            Consider Splashdown Waterpark and Goa Science Centre.
           </Text>
         </Box>
         <Box w="60%" p="1rem">
@@ -68,7 +67,7 @@ const SPLocation = ({name}) => {
           </Box>
         </Box>
       </Box>
-      <Box p="1.2rem" bg="white">
+      <Box p="1.2rem" bg="white" fontSize="0.9rem">
         <Box display="flex">
           <Box w="40%" align="initial">
             <Text fontSize="1.5rem" fontWeight="500">
@@ -86,23 +85,23 @@ const SPLocation = ({name}) => {
             </Box>
             <Box>
               <Collapse startingHeight={20} in={show} align="initial">
-                At {name}, you can look forward to a nightclub, a
-                round-trip airport shuttle and a poolside bar. Treat yourself to
-                a hot stone massage, a detox wrap or a body scrub at Conrad Spa
-                Pune, the on-site spa. Be sure to enjoy a meal at any of the 6
-                on-site restaurants, which feature international cuisine and a
-                poolside location. In-room WiFi (surcharge) is available to all
-                guests, along with a corner/local shop and a rooftop terrace.
-                Other perks at this hotel include: An outdoor pool and a
-                children's pool, with free cabanas, sunloungers and pool
-                umbrellas Free self-parking and valet parking Buffet breakfast
-                (surcharge), express check-out and express check-in Outdoor
-                furniture, a 24-hour front desk and concierge services Guest
-                reviews say great things about the helpful staff Room features
-                All 351 rooms offer comforts, such as 24-hour room service and
-                pillow menus, in addition to perks, such as laptop-compatible
-                safes and laptop-friendly workspaces. Guests reviews speak well
-                of the size rooms at the property. Extra amenities include:
+                At {name}, you can look forward to a nightclub, a round-trip
+                airport shuttle and a poolside bar. Treat yourself to a hot
+                stone massage, a detox wrap or a body scrub at Conrad Spa Pune,
+                the on-site spa. Be sure to enjoy a meal at any of the 6 on-site
+                restaurants, which feature international cuisine and a poolside
+                location. In-room WiFi (surcharge) is available to all guests,
+                along with a corner/local shop and a rooftop terrace. Other
+                perks at this hotel include: An outdoor pool and a children's
+                pool, with free cabanas, sunloungers and pool umbrellas Free
+                self-parking and valet parking Buffet breakfast (surcharge),
+                express check-out and express check-in Outdoor furniture, a
+                24-hour front desk and concierge services Guest reviews say
+                great things about the helpful staff Room features All 351 rooms
+                offer comforts, such as 24-hour room service and pillow menus,
+                in addition to perks, such as laptop-compatible safes and
+                laptop-friendly workspaces. Guests reviews speak well of the
+                size rooms at the property. Extra amenities include:
                 Rollaway/extra beds (surcharge) and free cots/infant beds
                 Bathrooms with rainfall showers and deep-soaking baths Separate
                 sitting areas, fridges and cookware/dishes/utensils
