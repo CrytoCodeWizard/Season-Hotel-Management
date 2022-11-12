@@ -6,7 +6,9 @@ import SingleProduct from "./SingleProduct";
 import CheckoutPage from "./CheckoutPage";
 import CreateHotel from "./CreateHotal";
 import Pagenot from "./Pagenot";
-import CreateAccount from "./SignUp"
+import CreateAccount from "./SignUp";
+import Login from "./Login";
+import ProfileEdit from "./ProfileEdit";
 const MainRoutes = () => {
   return (
     <div>
@@ -17,6 +19,8 @@ const MainRoutes = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/addhotel" element={<CreateHotel />} />
         <Route path="/signup" element={<CreateAccount />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profileEdit" element={<ProfileEdit />} />
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>

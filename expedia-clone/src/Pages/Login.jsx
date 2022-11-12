@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { AiFillApple } from "react-icons/ai"; // FcGoogle
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook } from "react-icons/ai";
-import { useDispatch, shallowEqual, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { SignUpFunction } from "../Redux/AuthContext/action";
+import { Loginfunction } from "../Redux/AuthContext/action";
+
 import {
   Box,
   Button,
@@ -16,29 +17,25 @@ import {
   Heading,
   Input,
   Spinner,
-  Select,
   Text,
   useMediaQuery,
   useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 
-export default function CreateAccount() {
+export default function Login() {
   const [isLoading, setIsLoading] = useState(true);
+  const [userObj, setUserObj] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userType, setUserType] = useState("");
 
-  const { userData, successfullyCreated, createAccountError } = useSelector(
-    (state) => {
-      return {
-        userData: state.AuthReducer.userData,
-        successfullyCreated: state.AuthReducer.successfullyCreated,
-        createAccountError: state.AuthReducer.createAccountError,
-      };
-    },
-    shallowEqual
-  );
+  const { userData, isAuth, isError } = useSelector((state) => {
+    return {
+      userData: state.AuthReducer.userData,
+      isAuth: state.AuthReducer.isAuth,
+      isError: state.AuthReducer.isError,
+    };
+  }, shallowEqual);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,46 +49,71 @@ export default function CreateAccount() {
   }, []);
 
   useEffect(() => {
-    if (successfullyCreated) {
+    if (isAuth) {
       toast({
-        title: `Account Created Successfull`,
+        title: `LogIn Successfull`,
         status: "success",
-        duration: 1500,
+        duration: 500,
         position: "top",
         isClosable: true,
       });
       setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+        navigate("/");
+      }, 1500);
     }
-  }, [successfullyCreated]);
+  }, [isAuth]);
 
   useEffect(() => {
-    if (createAccountError) {
+    axios
+      .get("https://636b1db9b10125b78feba23b.mockapi.io/profile")
+      .then((response) => {
+        setUserObj(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  const SendSignInRequest = () => {
+    let check;
+
+    let checkEmail = userObj.filter((el) => {
+      return el.email === email;
+    });
+
+    if (checkEmail.length > 0) {
+      check = userObj.filter((el) => {
+        return el.email === email && el.password === password;
+      });
+      //console.log(check[0]);
+
+      if (check.length > 0) {
+        dispatch(
+          Loginfunction({
+            ...check[0],
+          })
+        );
+      } else if (check.length === 0) {
+        toast({
+          title: `Wrong Password !!!`,
+          status: "error",
+          duration: 1500,
+          position: "top",
+          isClosable: true,
+        });
+      }
+    } else {
       toast({
-        title: `Something Went Wrong !!!`,
+        title: `User not registered !!!`,
         status: "error",
         duration: 1500,
         position: "top",
         isClosable: true,
       });
     }
-  }, [createAccountError]);
-
-  function SendSignInRequest() {
-    dispatch(
-      SignUpFunction({
-        email: email,
-        password: password,
-        userName: userName,
-        userType: userType,
-      })
-    );
     setEmail("");
     setPassword("");
-    setUserName("");
-    setUserType("");
-  }
+  };
 
   return (
     <>
@@ -113,7 +135,7 @@ export default function CreateAccount() {
           textAlign="left"
         >
           <Heading mt="10" as="h2" size="lg">
-            Create an account
+            Sign In
           </Heading>
 
           <FormControl
@@ -124,19 +146,6 @@ export default function CreateAccount() {
             mt={5}
             isRequired
           >
-            {/* Name */}
-            <FormLabel htmlFor="userName">Enter Your Name</FormLabel>
-            <Input
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="Enter User Name"
-              value={userName}
-              w={"100%"}
-              h={"40px"}
-              border={`2px solid`}
-              type={"text"}
-              mb={"8px"}
-              id="userName"
-            />
             {/* email */}
             <FormLabel htmlFor="email">Enter Email</FormLabel>
             <Input
@@ -152,21 +161,7 @@ export default function CreateAccount() {
             <FormHelperText mb={"8px"}>
               We'll never share your email.
             </FormHelperText>
-            {/* UserType */}
-            <FormLabel htmlFor="userType">User Type</FormLabel>
-            <Select
-              onChange={(e) => setUserType(e.target.value)}
-              width={"100%"}
-              h={"40px"}
-              border={`2px solid`}
-              mb={"8px"}
-              value={userType}
-              id="userType"
-            >
-              <option value="">Choose User Type</option>
-              <option value="customer">Customer</option>
-              <option value="admin">Admin</option>
-            </Select>
+
             {/* password */}
             <FormLabel htmlFor="password">Enter Password</FormLabel>
             <Input
@@ -202,14 +197,9 @@ export default function CreateAccount() {
               mt={4}
               colorScheme="blue"
               type="submit"
-              disabled={
-                email === "" ||
-                password === "" ||
-                userName === "" ||
-                userType === ""
-              }
+              disabled={email === "" || password === ""}
             >
-              Create Account
+              Sign In
             </Button>
 
             <Text mt={"15px"} display="flex" justifyContent={"center"}>
@@ -219,10 +209,9 @@ export default function CreateAccount() {
             </Text>
 
             <Text mt={"15px"} display="flex" justifyContent={"center"}>
-              Already have an account?
-              <Link to={"/login"} style={{ color: "blue" }}>
-                {" "}
-                Sign In
+              Don't have an account?{" "}
+              <Link to={"/signup"} style={{ color: "blue" }}>
+                Create Here...
               </Link>
             </Text>
 

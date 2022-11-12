@@ -61,7 +61,7 @@ function Navbar() {
             mt={5}
             w="100%"
             colorScheme="blue"
-            onClick={() => Navigate("#")}
+            onClick={() => Navigate("/login")}
           >
             Sign in
           </Button>
