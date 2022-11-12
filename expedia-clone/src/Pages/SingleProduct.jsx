@@ -4,9 +4,11 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import SPImages from '../Components/SPImages';
 import Overview from '../Components/Overview';
 import Rooms from '../Components/Rooms';
+
 import SPLocation from '../Components/SPLocation';
 import SPAmenities from '../Components/SPAmenities';
 import SPReviews from '../Components/SPReviews';
+
 
 const SingleProduct = () => {
     return (

@@ -1,32 +1,126 @@
 import React from "react";
 import {
   Box,
-  Center,
   Flex,
   Text,
-  Stack,
   InputGroup,
   InputLeftElement,
   Input,
   Icon,
+  Popover,
+  PopoverTrigger,
+  Portal,
+  PopoverContent,
+  PopoverHeader,
+  Heading,
+  PopoverCloseButton,
+  PopoverBody,
+  Button,
   useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
+  Wrap,
 } from "@chakra-ui/react";
-import { BsFillGeoAltFill, BsFillPersonFill } from "react-icons/bs";
+import { BsFillGeoAltFill } from "react-icons/bs";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getHotels } from "../Redux/AppContext/action";
+import { Link, useNavigate } from "react-router-dom";
 const SearchBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [adults, setAdults] = useState(1);
+  const [child, setChild] = useState(0);
+  const [room, setRoom] = useState(1);
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
+  const { onClose } = useDisclosure();
+  const [location, setLocation] = useState("");
+  const Room = () => {
+    return (
+      <>
+        <Flex justifyContent={"space-between"}>
+          <Box>Room</Box>
+          <Flex gap={2} alignItems={"center"}>
+            <Button
+              disabled={room === 1}
+              onClick={() => setRoom(room - 1)}
+              borderRadius={"50%"}
+            >
+              -
+            </Button>
+            <Text>{room}</Text>
+            <Button onClick={() => setRoom(room + 1)} borderRadius={"50%"}>
+              +
+            </Button>
+          </Flex>
+        </Flex>
+        <br />
+        <Flex justifyContent={"space-between"}>
+          <Box>Adults</Box>
+          <Flex gap={2} alignItems={"center"}>
+            <Button
+              disabled={adults === 1}
+              onClick={() => setAdults(adults - 1)}
+              borderRadius={"50%"}
+            >
+              -
+            </Button>
+            <Text>{adults}</Text>
+            <Button onClick={() => setAdults(adults + 1)} borderRadius={"50%"}>
+              +
+            </Button>
+          </Flex>
+        </Flex>
+        <br />
+        <Flex justifyContent={"space-between"}>
+          <Box>Children</Box>
+          <Flex gap={2} alignItems={"center"}>
+            <Button
+              disabled={child === 0}
+              onClick={() => setChild(child - 1)}
+              borderRadius={"50%"}
+            >
+              -
+            </Button>
+            <Text>{child}</Text>
+            <Button onClick={() => setChild(child + 1)} borderRadius={"50%"}>
+              +
+            </Button>
+          </Flex>
+        </Flex>
+      </>
+    );
+  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    const payload = {
+      location: location,
+      rooms: room,
+      adults: adults,
+      child: child,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+    };
+    dispatch(getHotels(payload));
+    navigate("/hotels");
+  };
   return (
     <div>
-      <Box width={"70%"} margin="auto">
+      <Box
+        bg={"white"}
+        width={"80%"}
+        margin="auto"
+        marginTop={"20px"}
+        border={"1px solid lightgrey"}
+        padding="20px"
+        borderRadius="10px"
+      >
         <Flex flexDirection={"column"}>
           <Box>
-            <Flex textAlign={"center"} justifyContent="center" gap={10}>
+            <Flex
+              textAlign={"center"}
+              justifyContent="center"
+              gap={10}
+              wrap="wrap"
+            >
               <Text>Stays</Text>
               <Text>Flights</Text>
               <Text>Cars</Text>
@@ -34,87 +128,150 @@ const SearchBar = () => {
               <Text>Things to do</Text>
             </Flex>
           </Box>
+          <br />
           <Box alignItems={"center"}>
-            <InputGroup gap={"10px"}>
-              <InputLeftElement
-                pointerEvents="none"
-                children={
-                  <Icon
-                    padding={"7px"}
-                    w={"25px"}
-                    h={"30px"}
-                    as={BsFillGeoAltFill}
-                  />
-                }
-              />
+            <InputGroup
+              gap={"10px"}
+              display="flex"
+              justifyContent={"center"}
+              flexWrap={"wrap"}
+            >
+              <InputGroup width={"400px"}>
+                <InputLeftElement
+                  pointerEvents="none"
+                  alignItems={"center"}
+                  margin="6px 0px"
+                  children={
+                    <Icon w={"25px"} h={"25px"} as={BsFillGeoAltFill} />
+                  }
+                />
+                <Input
+                  bg={"white"}
+                  type="text"
+                  placeholder="Going to"
+                  height="50px"
+                  alignItems={"center"}
+                  fontSize={"17px"}
+                  textAlign={"left"}
+                  padding="0px 35px"
+                  borderRadius={"10px"}
+                  border="1px solid"
+                  value={location}
+                  onChange={(e) => {
+                    setLocation(e.target.value);
+                  }}
+                />
+              </InputGroup>
+
               <Input
-                type="text"
-                placeholder="Going to"
-                width={"30%"}
-                height="40px"
-                alignItems={"center"}
-                fontSize={"17px"}
-                textAlign={"left"}
-                padding="0px 35px"
-                borderRadius={"10px"}
-                border="1px solid"
-              />
-              <Input
+                bg={"white"}
                 type={"date"}
-                height="40px"
+                height="50px"
+                width={"120px"}
+                padding="0px"
                 alignItems={"center"}
-                fontSize={"17px"}
+                fontSize={"15px"}
                 borderRadius={"10px"}
                 border="1px solid"
                 placeholder="Check In"
+                value={checkInDate}
+                onChange={(e) => setCheckInDate(e.target.value)}
               ></Input>
               <Input
-                focusBorderColor="skyBlue"
+                bg={"white"}
+                width={"120px"}
+                padding="0px"
                 type={"date"}
-                height="40px"
+                height="50px"
                 alignItems={"center"}
-                fontSize={"17px"}
+                fontSize={"15px"}
                 borderRadius={"10px"}
                 border="1px solid"
                 placeholder="Check In"
+                value={checkOutDate}
+                onChange={(e) => setCheckOutDate(e.target.value)}
               ></Input>
               <Flex
+                _focus={{ borderColor: "blue" }}
                 border={"1px solid "}
-                height="40px"
-                width={"20%"}
+                focusBorderColor="red"
+                height="50px"
+                width={"200px"}
                 borderRadius={"10px"}
                 gap={4}
+                justifyContent="center"
+                bg={"white"}
               >
-                <Box alignItems={"center"}>
-                  <Icon
-                    as={BsFillPersonFill}
-                    padding="10px 5px"
-                    w="20px"
-                    h="20px"
-                  ></Icon>
-                </Box>
-                <Box>
-                  <Flex height="100%" flexDirection={"column"}>
-                    <Box margin={"0px"} padding="0px">
-                      <Text padding={"0px"} margin={"0px"} fontSize={"15px"}>
-                        Travellers
-                      </Text>
+                <Popover bg={"white"}>
+                  <PopoverTrigger>
+                    <Box>
+                      <Flex height="100%" flexDirection={"column"}>
+                        <Box margin={"0px"} padding="0px">
+                          <Text
+                            padding={"0px"}
+                            margin={"0px"}
+                            fontSize={"13px"}
+                          >
+                            Travellers
+                          </Text>
+                        </Box>
+                        <Flex gap={4}>
+                          <Text padding={"0px"} margin={"0px"}>
+                            room {room}
+                          </Text>
+                          <Text padding={"0px"} margin={"0px"}>
+                            {adults + child} travellers
+                          </Text>
+                        </Flex>
+                      </Flex>
                     </Box>
-                    <Flex gap={4}>
-                      <Text padding={"0px"} margin={"0px"}>
-                        1 room
-                      </Text>
-                      <Text padding={"0px"} margin={"0px"}>
-                        1 travellers
-                      </Text>
-                    </Flex>
-                  </Flex>
-                </Box>
+                  </PopoverTrigger>
+                  <Portal>
+                    <PopoverContent>
+                      <PopoverHeader>
+                        <Heading size={"md"}>Travellers</Heading>
+                      </PopoverHeader>
+                      <PopoverCloseButton />
+                      <PopoverBody>
+                        <Room />
+                        <Flex justifyContent={"flex-end"}>
+                          <Button variant={"ghost"} color="blue.500">
+                            Add another room
+                          </Button>
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Button
+                            textAlign={"center"}
+                            margin="auto"
+                            bg={"blue.500"}
+                            _hover={{ bg: "blue.600" }}
+                            color="white"
+                            width={"50%"}
+                            onClick={onClose}
+                          >
+                            Done
+                          </Button>
+                        </Flex>
+                      </PopoverBody>
+                    </PopoverContent>
+                  </Portal>
+                </Popover>
               </Flex>
             </InputGroup>
           </Box>
+          <br />
           <Box>
-            <Input type={"checkbox"}></Input>
+            <Button
+              w={"30%"}
+              fontSize="20px"
+              bg={"blue.500"}
+              _hover={{ bg: "blue.600" }}
+              color="white"
+              onClick={handleSearch}
+            >
+              Search
+            </Button>
           </Box>
         </Flex>
       </Box>

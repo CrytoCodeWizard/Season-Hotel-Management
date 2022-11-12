@@ -1,3 +1,4 @@
+
 import { Box, Button, Divider, Grid, GridItem, HStack, Img, ListItem, OrderedList, Radio, RadioGroup, Stack, Text, UnorderedList, useDisclosure, VStack } from '@chakra-ui/react';
 import React from 'react'
 import RoomImgSlider from './RoomImgSlider';
@@ -15,6 +16,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
+
 const Rooms = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -24,6 +26,7 @@ const Rooms = () => {
           Choose your room
         </Text>
       </Box>
+
       <Grid templateColumns="repeat(3, 32%)" gap={6}>
         <GridItem
           m="auto"
@@ -1334,9 +1337,10 @@ const Rooms = () => {
             </Box>
           </Box>
         </GridItem>
+
       </Grid>
     </Box>
   );
-}
+};
 
-export default Rooms
+export default Rooms;

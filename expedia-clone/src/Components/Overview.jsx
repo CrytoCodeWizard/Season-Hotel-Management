@@ -15,20 +15,24 @@ import { FaSpa } from "react-icons/fa";
 const Overview = () => {
   return (
     <Box w="100%">
+
       <Box p="1rem" h="auto"  display={"flex"} >
         <Box w="65%" h="100%"  lineHeight={"1.7rem"}>
           <Text fontWeight={500} fontSize="2rem" align="initial">
             Conrad Pune by Hilton
           </Text>
           <HStack w="90px" h="4%" my="1rem">
+
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
+
           </HStack>
           <Box>
             <Text fontSize="1.25rem" fontWeight={500} align="initial">
+
               4.7/5 Exceptional
             </Text>
             <Text fontSize="0.875rem" fontWeight={400} align="initial">
@@ -40,11 +44,13 @@ const Overview = () => {
               </Text>
             </Link>
           </Box>
+
           <Box my="4px">
             <Text fontSize="1.25rem" fontWeight={500} align="initial">
               Popular Amenities
             </Text>
             <HStack my="4px">
+
               <VStack align="initial" w="50%">
                 <HStack>
                   <RiParkingFill />
@@ -87,7 +93,9 @@ const Overview = () => {
               </Text>
             </Box>
           </Box>
+
           <Box w="100%" height="40%" my="0.5rem">
+
             <Text fontSize="1.25rem" fontWeight={500} align="initial">
               Explore the Area
             </Text>

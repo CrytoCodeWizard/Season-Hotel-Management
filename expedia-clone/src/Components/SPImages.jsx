@@ -1,5 +1,7 @@
+
 import { Box,  Img,  } from '@chakra-ui/react';
 import React from 'react'
+
 
 const SPImages = () => {
   return (
@@ -51,6 +53,8 @@ const SPImages = () => {
       </Box>
     </Box>
   );
-}
+};
+
 
 export default SPImages;
+

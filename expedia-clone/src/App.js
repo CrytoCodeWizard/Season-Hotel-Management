@@ -1,17 +1,13 @@
 import "./App.css";
-import Footer from "./Components/Footer";
 import NavBar from "./Components/navbar";
-import HomePage from "./Pages/HomePage";
-
+import MainRoutes from "./Pages/MainRoutes";
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <HomePage />
-      <Footer />
+      <MainRoutes />
     </div>
   );
-
 }
 
 export default App;
