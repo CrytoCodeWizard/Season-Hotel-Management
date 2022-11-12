@@ -12,7 +12,7 @@ import { FaSpa, FaUmbrellaBeach, FaWheelchair } from "react-icons/fa";
 
 const SPAmenities = () => {
   return (
-    <Box w="100%" display="flex" p="1rem" bg="white">
+    <Box w="100%" display="flex" p="1rem" bg="white" fontSize="0.9rem">
       <Box w="30%" align="initial">
         <Text fontSize="1.5rem" fontWeight="500">
           Property amenities
