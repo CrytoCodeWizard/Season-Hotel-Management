@@ -19,7 +19,7 @@ import Footer from "../Components/Footer";
 import SearchBar from "../Components/SearchBar";
 import SimpleCard from "../Components/SimpleCard";
 const Hotels = () => {
-  const hotels = useSelector((state) => state.hotels);
+  const hotels = useSelector((state) => state.AppReducer.hotels);
   const [filtered, setFiltered] = useState([]);
   const [price, setPrice] = useState(0);
   useEffect(() => {
@@ -32,7 +32,6 @@ const Hotels = () => {
     const filtering = (el) => {
       return +el.price1.split(",").join("") < +p;
     };
-
     setFiltered(hotels.filter(filtering));
   }, [price, hotels]);
   const handleSort = () => {

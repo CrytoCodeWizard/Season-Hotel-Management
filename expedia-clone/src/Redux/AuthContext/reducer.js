@@ -18,7 +18,7 @@ const signInData = {
   createAccountError: false,
 };
 
-export const AuthReducer = (state = signInData, action) => {
+export const reducer = (state = signInData, action) => {
   const { type, payload } = action;
   switch (type) {
     case SIGNIN_REQUEST:

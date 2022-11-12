@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { SignUpFunction } from "../Redux/action";
+import { SignUpFunction } from "../Redux/AuthContext/action";
 import {
   Box,
   Button,

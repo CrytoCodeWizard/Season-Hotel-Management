@@ -70,7 +70,7 @@ function Navbar() {
             mb={2.5}
             w="100%"
             colorScheme="green"
-            onClick={() => Navigate("#")}
+            onClick={() => Navigate("/signup")}
           >
             Create a free account here
           </Button>

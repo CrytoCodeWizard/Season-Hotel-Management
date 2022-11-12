@@ -6,7 +6,7 @@ import SingleProduct from "./SingleProduct";
 import CheckoutPage from "./CheckoutPage";
 import CreateHotel from "./CreateHotal";
 import Pagenot from "./Pagenot";
-
+import CreateAccount from "./SignUp"
 const MainRoutes = () => {
   return (
     <div>
