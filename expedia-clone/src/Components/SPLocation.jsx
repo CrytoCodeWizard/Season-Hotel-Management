@@ -5,7 +5,7 @@ import { AiFillCar, AiOutlineCheck } from "react-icons/ai";
 import { FaBusAlt, FaPlane } from "react-icons/fa";
 import {TbNorthStar}from "react-icons/tb"
 
-const SPLocation = () => {
+const SPLocation = ({name}) => {
 
     const [show, setShow] = useState(false);
 
@@ -21,7 +21,7 @@ const SPLocation = () => {
             Candolim
           </Text>
           <Text>
-            Albergo Parigi Candolim Goa is located in Gauravaddo, a
+            {name} Candolim Goa is located in Gauravaddo, a
             neighbourhood in Candolim, and is in the entertainment district and
             near the beach. Fort Aguada is a notable landmark, and the area's
             natural beauty can be seen at Candolim Beach and Calangute Beach.
@@ -77,7 +77,7 @@ const SPLocation = () => {
           </Box>
           <Box w="60%">
             <Text fontSize="1.2rem" fontWeight="500" align="initial">
-              Albergo Parigi
+              {name}
             </Text>
             <Box my="0.5rem">
               <Text align="initial">
@@ -86,7 +86,7 @@ const SPLocation = () => {
             </Box>
             <Box>
               <Collapse startingHeight={20} in={show} align="initial">
-                At Albergo Parigi, you can look forward to a nightclub, a
+                At {name}, you can look forward to a nightclub, a
                 round-trip airport shuttle and a poolside bar. Treat yourself to
                 a hot stone massage, a detox wrap or a body scrub at Conrad Spa
                 Pune, the on-site spa. Be sure to enjoy a meal at any of the 6

@@ -12,14 +12,14 @@ import {
 } from "react-icons/md";
 import { FaSpa } from "react-icons/fa";
 
-const Overview = () => {
+const Overview = ({name,rating,review}) => {
   return (
     <Box w="100%">
 
       <Box p="1rem" h="auto"  display={"flex"} >
         <Box w="65%" h="100%"  lineHeight={"1.7rem"}>
           <Text fontWeight={500} fontSize="2rem" align="initial">
-            Conrad Pune by Hilton
+            {name}
           </Text>
           <HStack w="90px" h="4%" my="1rem">
 
@@ -33,10 +33,10 @@ const Overview = () => {
           <Box>
             <Text fontSize="1.25rem" fontWeight={500} align="initial">
 
-              4.7/5 Exceptional
+              {rating} {review}
             </Text>
             <Text fontSize="0.875rem" fontWeight={400} align="initial">
-              Guests rated this property 4.7/5 for cleanliness.
+              Guests rated this property {rating} for cleanliness.
             </Text>
             <Link>
               <Text fontSize="0.875rem" fontWeight={400} align="initial">
