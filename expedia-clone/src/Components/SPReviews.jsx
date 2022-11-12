@@ -2,7 +2,7 @@ import { Box, Divider, HStack, Link, Progress, Text } from "@chakra-ui/react";
 import React from "react";
 import{AiFillLike} from "react-icons/ai"
 
-const SPReviews = () => {
+const SPReviews = ({review,rating}) => {
   return (
     <Box w="100%" display="flex" p="1rem" bg="white" >
       <Box w="35%" align="initial" p="1rem">
@@ -10,12 +10,12 @@ const SPReviews = () => {
           <HStack>
             <Box>
               <Text fontSize="4rem" fontWeight="500">
-                4.7
+                {rating}
               </Text>
             </Box>
             <Box>
               <Text fontSize="1rem" fontWeight="500">
-                Exceptional
+                {review}
               </Text>
               <Text color="blue" fontSize="0.8rem" fontWeight="400">
                 <Link>158 Reviews</Link>

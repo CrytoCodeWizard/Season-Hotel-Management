@@ -1,6 +1,6 @@
 
 import { Box, Button, Divider, Grid, GridItem, HStack, Img, ListItem, OrderedList, Radio, RadioGroup, Stack, Text, UnorderedList, useDisclosure, VStack } from '@chakra-ui/react';
-import React from 'react'
+import React, { useState } from 'react'
 import RoomImgSlider from './RoomImgSlider';
 import { BiArea } from "react-icons/bi"
 import { MdLocationCity,MdLocalParking } from "react-icons/md"
@@ -15,10 +15,12 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import { useEffect } from 'react';
 
 
-const Rooms = () => {
+const Rooms = ({price1,price2}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
   return (
     <Box w="100%">
       <Box textAlign="initial" my="3%">
@@ -112,7 +114,10 @@ const Rooms = () => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup
+                defaultValue="1"
+                align="initial"
+              >
                 <Stack>
                   <Radio value="1" size="sm">
                     No extras + ₹0
@@ -127,11 +132,10 @@ const Rooms = () => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                {" "}
-                ₹20000
+                 ₹{price1}
               </Text>
               <br />
-              <HStack justifyContent="space-around">
+              <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
                 <Button
                   bg="#3662D8"
@@ -149,7 +153,7 @@ const Rooms = () => {
                 size="xl"
               >
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent >
                   <ModalCloseButton />
                   <ModalHeader>Your payment options</ModalHeader>
 
@@ -193,8 +197,7 @@ const Rooms = () => {
                       <Box w="20%"></Box>
                       <Box alignItems="flex-end" w="20%">
                         <Text fontWeight="700" fontSize="1.5rem" align="end">
-                          {" "}
-                          ₹20000
+                          ₹{price1}
                         </Text>
                         <Button
                           bg="#3662D8"
@@ -228,8 +231,7 @@ const Rooms = () => {
                       <Box w="15%"></Box>
                       <Box alignItems="flex-end" w="25%">
                         <Text fontWeight="700" fontSize="1.5rem" align="end">
-                          {" "}
-                          ₹20000
+                          ₹{price1}
                         </Text>
                         <Button
                           bg="#3662D8"
@@ -1283,8 +1285,8 @@ const Rooms = () => {
                       <Box w="20%"></Box>
                       <Box alignItems="flex-end" w="20%">
                         <Text fontWeight="700" fontSize="1.5rem" align="end">
-                          {" "}
-                          ₹20000
+                          
+                          ₹{price1}
                         </Text>
                         <Button
                           bg="#3662D8"
@@ -1319,7 +1321,7 @@ const Rooms = () => {
                       <Box alignItems="flex-end" w="25%">
                         <Text fontWeight="700" fontSize="1.5rem" align="end">
                           {" "}
-                          ₹20000
+                          ₹{price1}
                         </Text>
                         <Button
                           bg="#3662D8"
@@ -1337,7 +1339,6 @@ const Rooms = () => {
             </Box>
           </Box>
         </GridItem>
-
       </Grid>
     </Box>
   );
