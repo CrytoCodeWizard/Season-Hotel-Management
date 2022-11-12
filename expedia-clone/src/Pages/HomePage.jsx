@@ -154,6 +154,9 @@ const HomePage = () => {
         <Text fontWeight="bold">
           Explore a world of travel with allSeasonHOTELS
         </Text>
+        <Text fontWeight="bold">
+          Currently providing services in Goa, Delhi and Pune
+        </Text>
         <a style={{ color: "blue" }} href="/">
           Discover new places and experiences
         </a>

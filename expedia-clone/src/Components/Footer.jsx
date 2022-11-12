@@ -102,10 +102,9 @@ function Footer() {
             />
           </Center>
           <Text fontSize="xs">
-            © 2022 allSeasonHOTELS, Inc., an allSeasonHOTELS Group company /
-            allSeasonHOTELS Asia Holdings Mauritius / BEX Travel Asia Pte. Ltd.
-            All rights reserved. allSeasonHOTELS and the Airplane Logo are
-            trademarks or registered trademarks of allSeasonHOTELS, Inc.
+            © 2022 allSeasonHOTELS, Inc., an allSeasonHOTELS Group company, All
+            rights reserved. allSeasonHOTELS and the Logo are trademarks or
+            registered trademarks of allSeasonHOTELS, Inc.
           </Text>
         </Box>
       </Container>

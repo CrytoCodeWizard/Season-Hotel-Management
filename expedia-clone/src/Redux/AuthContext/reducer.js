@@ -32,7 +32,7 @@ export const reducer = (state = signInData, action) => {
         ...state,
         isLoading: false,
         isAuth: true,
-        userData: payload.data,
+        userData: payload,
       };
 
     case SIGNIN_FAILURE:
