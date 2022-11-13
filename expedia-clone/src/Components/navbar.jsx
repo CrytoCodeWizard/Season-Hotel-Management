@@ -11,7 +11,9 @@ import {
   Avatar,
   Box,
   Button,
+  Center,
   Container,
+  Heading,
   Icon,
   Image,
   Stack,
@@ -23,28 +25,50 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverBody,
+  PopoverHeader,
   PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
   Spacer,
   Text,
+  Tag,
   useMediaQuery,
+  useToast,
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { SIGNOUT } from "../Redux/AuthContext/actionTypes";
 
 function Navbar() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 992px)");
   const [isLargerThan576] = useMediaQuery("(min-width: 576px)");
   const Navigate = useNavigate();
   const hoverColor = "#3182ce";
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+  const { userData, isAuth } = useSelector((state) => {
+    return {
+      userData: state.AuthReducer.userData,
+      isAuth: state.AuthReducer.isAuth,
+    };
+  }, shallowEqual);
+
+  const handleTrip = () => {
+    if (isAuth) Navigate("/");
+    else
+      toast({
+        title: "Please Sign in !!!",
+        status: "info",
+        duration: 1000,
+        isClosable: true,
+        position: "top",
+      });
+  };
 
   const UserLoginSection = () => {
     return (
-      <PopoverContent
-        padding="5px"
-        marginRight={"20px"}
-        boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-      >
+      <PopoverContent padding="5px" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px">
         <PopoverArrow />
         <PopoverCloseButton />
         <PopoverBody>
@@ -85,6 +109,65 @@ function Navbar() {
           <Link to="#" mt={5}>
             <Text _hover={{ color: hoverColor }}>Feedback</Text>
           </Link>
+        </PopoverFooter>
+      </PopoverContent>
+    );
+  };
+
+  const handleSignout = (e) => {
+    setTimeout(() => {
+      Navigate("/signup");
+    }, 2000);
+
+    dispatch({ type: SIGNOUT });
+    toast({
+      title: "Signout Successfull !!!",
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
+  const SignInSignOutSection = () => {
+    return (
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverCloseButton />
+        <PopoverHeader>
+          <Center mb="2">
+            <Heading size="md">Hi, {userData.userName}</Heading>
+          </Center>
+          <Center mb="2">
+            <Heading as="h6" size="xs">
+              {userData.email}
+            </Heading>
+          </Center>
+          <Center mb="2">
+            <Tag variant="solid" colorScheme="blue">
+              Blue Member
+            </Tag>
+          </Center>
+        </PopoverHeader>
+        <PopoverBody>
+          <Link to="/profileEdit">Account</Link>
+          <br />
+          <Link to="/">Lists of favourites</Link>
+          <br />
+          <Link to="/">Feedback</Link>
+        </PopoverBody>
+        <PopoverFooter>
+          <Center>
+            <Button
+              w="100%"
+              colorScheme="blue"
+              onClick={(e) => {
+                handleSignout(e);
+              }}
+            >
+              Sign out
+            </Button>
+          </Center>
         </PopoverFooter>
       </PopoverContent>
     );
@@ -193,10 +276,11 @@ function Navbar() {
                     fontSize="18px"
                     fontWeight="500"
                     _hover={{ color: hoverColor }}
+                    onClick={() => handleTrip()}
                   >
                     Trips
                   </Text>
-                  <Popover>
+                  <Popover placement="bottom-end">
                     <PopoverTrigger>
                       <Text
                         cursor="pointer"
@@ -204,10 +288,10 @@ function Navbar() {
                         fontWeight="500"
                         _hover={{ color: hoverColor }}
                       >
-                        Sign In
+                        {isAuth ? userData.userName : "Sign In"}
                       </Text>
                     </PopoverTrigger>
-                    <UserLoginSection />
+                    {isAuth ? <SignInSignOutSection /> : <UserLoginSection />}
                   </Popover>
                 </Stack>
               ) : (
@@ -238,6 +322,7 @@ function Navbar() {
                     objectFit="cover"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Font_Awesome_5_solid_shopping-bag.svg/1792px-Font_Awesome_5_solid_shopping-bag.svg.png"
                     alt="Trips"
+                    onClick={() => handleTrip()}
                   />
                   <Popover>
                     <PopoverTrigger>
@@ -247,7 +332,7 @@ function Navbar() {
                         src="http://cdn.onlinewebfonts.com/svg/img_24787.png"
                       />
                     </PopoverTrigger>
-                    <UserLoginSection />
+                    {isAuth ? <SignInSignOutSection /> : <UserLoginSection />}
                   </Popover>
                 </Stack>
               )}
