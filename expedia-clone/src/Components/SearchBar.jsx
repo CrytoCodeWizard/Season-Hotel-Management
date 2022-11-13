@@ -16,15 +16,13 @@ import {
   PopoverCloseButton,
   PopoverBody,
   Button,
-  useDisclosure,
-  Wrap,
   useToast,
 } from "@chakra-ui/react";
 import { BsFillGeoAltFill } from "react-icons/bs";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getHotels } from "../Redux/AppContext/action";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { useRef } from "react";
 const SearchBar = () => {
   const [adults, setAdults] = useState(1);
