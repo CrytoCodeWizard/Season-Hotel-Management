@@ -17,10 +17,10 @@ const MainRoutes = () => {
         <Route path="/hotels" element={<Hotels />} />
         <Route path="/hotels/:id" element={<SingleProduct />} />
         <Route path="/hotels/:id/checkout" element={<CheckoutPage />} />
-        <Route path="/addhotel" element={<CreateHotel />} />
         <Route path="/signup" element={<CreateAccount />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profileEdit" element={<ProfileEdit />} />
+        <Route path="/admin" element={<CreateHotel />} />
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>

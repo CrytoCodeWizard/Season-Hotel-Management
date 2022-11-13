@@ -17,6 +17,7 @@ import { BsFillCloudCheckFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
 const CheckoutPage = () => {
   const rooms = useSelector((state) => state.AppReducer.rooms);
   const adults = useSelector((state) => state.AppReducer.adults);
@@ -27,8 +28,17 @@ const CheckoutPage = () => {
   const price = Number(localHotel.price1.split(",").join("")) * rooms;
   const tax = (price * 18) / 100;
   const total = tax + price;
+  console.log(userData);
   const addTrips = () => {
-    userData.trip = [...userData.trip, localHotel];
+    if (isAuth) {
+      const id = userData.id;
+      const trip = [localHotel];
+      axios.put(
+        `https://636b1db9b10125b78feba23b.mockapi.io/profile/${id}`,
+        trip
+      )
+      navigate("/");
+    }
   };
   return (
     <div style={{ backgroundColor: "#f8f5f4" }}>

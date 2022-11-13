@@ -269,7 +269,7 @@ function Navbar() {
                     fontSize="18px"
                     fontWeight="500"
                   >
-                    <Link>Support</Link>
+                    <Link>Admin Support</Link>
                   </Text>
                   <Text
                     cursor="pointer"

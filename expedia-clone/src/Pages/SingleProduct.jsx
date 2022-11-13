@@ -16,7 +16,7 @@ import { getHotels } from "../Redux/AppContext/action";
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
   const [currentHotel, setCurrentHotel] = useState({});
   const hotels = useSelector((state) => state.AppReducer.hotels);
   useEffect(() => {
