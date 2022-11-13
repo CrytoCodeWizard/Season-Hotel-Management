@@ -24,14 +24,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHotels } from "../Redux/AppContext/action";
 import { Link, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 const SearchBar = () => {
   const [adults, setAdults] = useState(1);
   const [child, setChild] = useState(0);
   const [room, setRoom] = useState(1);
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
-  const { onClose } = useDisclosure();
   const [location, setLocation] = useState("");
+  const initRef = useRef();
   const Room = () => {
     return (
       <>
@@ -202,60 +203,60 @@ const SearchBar = () => {
                 justifyContent="center"
                 bg={"white"}
               >
-                <Popover bg={"white"}>
-                  <PopoverTrigger>
-                    <Box>
-                      <Flex height="100%" flexDirection={"column"}>
-                        <Box margin={"0px"} padding="0px">
-                          <Text
-                            padding={"0px"}
-                            margin={"0px"}
-                            fontSize={"13px"}
-                          >
-                            Travellers
-                          </Text>
+                <Popover initialFocusRef={initRef} bg={"white"}>
+                  {({ isOpen, onClose }) => (
+                    <>
+                      <PopoverTrigger>
+                        <Box>
+                          {isOpen ? "" : ""}
+                          <Flex height="100%" flexDirection={"column"}>
+                            <Box margin={"0px"} padding="0px">
+                              <Text
+                                padding={"0px"}
+                                margin={"0px"}
+                                fontSize={"13px"}
+                              >
+                                Travellers
+                              </Text>
+                            </Box>
+                            <Flex gap={4}>
+                              <Text padding={"0px"} margin={"0px"}>
+                                room {room}
+                              </Text>
+                              <Text padding={"0px"} margin={"0px"}>
+                                {adults + child} travellers
+                              </Text>
+                            </Flex>
+                          </Flex>
                         </Box>
-                        <Flex gap={4}>
-                          <Text padding={"0px"} margin={"0px"}>
-                            room {room}
-                          </Text>
-                          <Text padding={"0px"} margin={"0px"}>
-                            {adults + child} travellers
-                          </Text>
-                        </Flex>
-                      </Flex>
-                    </Box>
-                  </PopoverTrigger>
-                  <Portal>
-                    <PopoverContent>
-                      <PopoverHeader>
-                        <Heading size={"md"}>Travellers</Heading>
-                      </PopoverHeader>
-                      <PopoverCloseButton />
-                      <PopoverBody>
-                        <Room />
-                        <Flex justifyContent={"flex-end"}>
-                          <Button variant={"ghost"} color="blue.500">
-                            Add another room
-                          </Button>
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Button
-                            textAlign={"center"}
-                            margin="auto"
-                            bg={"blue.500"}
-                            _hover={{ bg: "blue.600" }}
-                            color="white"
-                            width={"50%"}
-                            onClick={onClose}
-                          >
-                            Done
-                          </Button>
-                        </Flex>
-                      </PopoverBody>
-                    </PopoverContent>
-                  </Portal>
+                      </PopoverTrigger>
+                      <Portal>
+                        <PopoverContent>
+                          <PopoverHeader>
+                            <Heading size={"md"}>Travellers</Heading>
+                          </PopoverHeader>
+                          <PopoverCloseButton />
+                          <PopoverBody>
+                            <Room />
+                            <br />
+                            <Flex>
+                              <Button
+                                textAlign={"center"}
+                                margin="auto"
+                                bg={"blue.500"}
+                                _hover={{ bg: "blue.600" }}
+                                color="white"
+                                width={"50%"}
+                                onClick={onClose}
+                              >
+                                Done
+                              </Button>
+                            </Flex>
+                          </PopoverBody>
+                        </PopoverContent>
+                      </Portal>
+                    </>
+                  )}
                 </Popover>
               </Flex>
             </InputGroup>
