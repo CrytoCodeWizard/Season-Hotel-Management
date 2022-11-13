@@ -15,14 +15,21 @@ import {
 } from "@chakra-ui/react";
 import { BsFillCloudCheckFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
-
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 const CheckoutPage = () => {
-  const rooms = useSelector((state) => state.rooms);
-  const adults = useSelector((state) => state.adults);
-  const price = 16000 * rooms;
+  const rooms = useSelector((state) => state.AppReducer.rooms);
+  const adults = useSelector((state) => state.AppReducer.adults);
+  const userData = useSelector((state) => state.AuthReducer.userData);
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  const navigate = useNavigate();
+  const localHotel = JSON.parse(localStorage.getItem("singleHotel"));
+  const price = Number(localHotel.price1.split(",").join("")) * rooms;
   const tax = (price * 18) / 100;
-  const total = price + tax;
-  console.log(rooms);
+  const total = tax + price;
+  const addTrips = () => {
+    userData.trip = [...userData.trip, localHotel];
+  };
   return (
     <div style={{ backgroundColor: "#f8f5f4" }}>
       <div
@@ -386,8 +393,12 @@ const CheckoutPage = () => {
                           </Text>{" "}
                         </Button>
                       </Box>
-                      <Button m={"10px"} colorScheme={"yellow"}>
-                        Complete Booking{" "}
+                      <Button
+                        onClick={addTrips}
+                        m={"10px"}
+                        colorScheme={"yellow"}
+                      >
+                        Complete Booking
                       </Button>
                     </Box>
                     <Text fontSize="13px">

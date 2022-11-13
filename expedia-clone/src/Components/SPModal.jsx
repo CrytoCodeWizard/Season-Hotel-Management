@@ -27,9 +27,9 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 const SPModal = ({ price1 }) => {
-    
+  const { id } = useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -87,7 +87,7 @@ const SPModal = ({ price1 }) => {
                 <Text fontWeight="700" fontSize="1.5rem" align="end">
                   ₹{price1}
                 </Text>
-                <Link to="/checkout">
+                <Link to={`/hotels/${id}/checkout`}>
                   <Button
                     bg="#3662D8"
                     color="white"
@@ -121,6 +121,7 @@ const SPModal = ({ price1 }) => {
                 <Text fontWeight="700" fontSize="1.5rem" align="end">
                   ₹{price1}
                 </Text>
+                <Link to={`/hotels/${id}/checkout`}>
                 <Button
                   bg="#3662D8"
                   color="white"
@@ -129,6 +130,7 @@ const SPModal = ({ price1 }) => {
                 >
                   Pay at Property
                 </Button>
+                </Link>
               </Box>
             </HStack>
           </ModalBody>
