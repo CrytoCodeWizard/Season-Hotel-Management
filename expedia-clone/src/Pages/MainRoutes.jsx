@@ -9,6 +9,8 @@ import Pagenot from "./Pagenot";
 import CreateAccount from "./SignUp";
 import Login from "./Login";
 import ProfileEdit from "./ProfileEdit";
+import ConfirmBooking from "./ConfirmBooking";
+import Trips from "./Trips";
 const MainRoutes = () => {
   return (
     <div>
@@ -21,6 +23,8 @@ const MainRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/profileEdit" element={<ProfileEdit />} />
         <Route path="/admin" element={<CreateHotel />} />
+        <Route path="/bookingConfirmed" element={<ConfirmBooking />} />
+        <Route path="/trips" element={<Trips />} />
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>
