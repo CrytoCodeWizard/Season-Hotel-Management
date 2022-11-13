@@ -14,7 +14,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import { BsFillCloudCheckFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -24,22 +24,51 @@ const CheckoutPage = () => {
   const userData = useSelector((state) => state.AuthReducer.userData);
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
   const navigate = useNavigate();
-  const localHotel = JSON.parse(localStorage.getItem("singleHotel"));
-  const price = Number(localHotel.price1.split(",").join("")) * rooms;
+  const [localHotel, setLocalHotel] = useState({});
+  // const [ordered, setOrdered] = useState(false);
+  const currentHotel = JSON.parse(localStorage.getItem("singleHotel"));
+  const price = Number(currentHotel.price1.split(",").join("")) * rooms;
   const tax = (price * 18) / 100;
   const total = tax + price;
-  console.log(userData);
+  const { checkInDate, checkOutDate, child } = useSelector((store) => {
+    return {
+      checkInDate: store.AppReducer.checkInDate,
+      checkOutDate: store.AppReducer.checkOutDate,
+      child: store.AppReducer.child,
+    };
+  }, shallowEqual);
+
+  useEffect(() => {
+    setLocalHotel({
+      ...currentHotel,
+      ["checkInDate"]: checkInDate,
+      ["checkOutDate"]: checkOutDate,
+      ["rooms"]: rooms,
+      ["adults"]: adults,
+      ["child"]: child,
+    });
+  }, []);
+
   const addTrips = () => {
     if (isAuth) {
       const id = userData.id;
       const trip = [localHotel];
-      axios.put(
-        `https://636b1db9b10125b78feba23b.mockapi.io/profile/${id}`,
-        trip
-      )
-      navigate("/");
+      console.log(localHotel, trip);
+      axios({
+        method: "put",
+        url: `https://636b1db9b10125b78feba23b.mockapi.io/profile/${id}`,
+        data: {
+          trip: trip,
+        },
+      });
     }
   };
+
+  const confirmBooking = () => {
+    navigate(`/bookingConfirmed`);
+    addTrips();
+  };
+
   return (
     <div style={{ backgroundColor: "#f8f5f4" }}>
       <div
@@ -404,9 +433,9 @@ const CheckoutPage = () => {
                         </Button>
                       </Box>
                       <Button
-                        onClick={addTrips}
                         m={"10px"}
                         colorScheme={"yellow"}
+                        onClick={confirmBooking}
                       >
                         Complete Booking
                       </Button>
