@@ -54,7 +54,7 @@ export const reducer = (state = signInData, action) => {
         createAccountLoading: false,
         successfullyCreated: true,
         createAccountError: false,
-        isAuth: true,
+        isAuth: false,
         userData: payload,
       };
 

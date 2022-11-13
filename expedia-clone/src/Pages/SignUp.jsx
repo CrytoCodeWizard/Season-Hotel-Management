@@ -221,7 +221,6 @@ export default function CreateAccount() {
             <Text mt={"15px"} display="flex" justifyContent={"center"}>
               Already have an account?
               <Link to={"/login"} style={{ color: "blue" }}>
-                {" "}
                 Sign In
               </Link>
             </Text>

@@ -67,9 +67,10 @@
 // export default CreateHotal;
 
 import React from 'react'
-import { Heading, Box, Input, Button } from '@chakra-ui/react'
+import { Heading, Box, Input, Button, useToast } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CreateHotel = () => {
     const [name, setName] = useState('')
@@ -77,8 +78,8 @@ const CreateHotel = () => {
     const [price, setPrice] = useState('')
     const [rating, setRating] = useState('')
     const [description, setDescription] = useState('')
-
-
+    const toast = useToast()
+const navigate = useNavigate()
     const handleSubmit = () => {
         let obj = {
             name,
@@ -90,7 +91,14 @@ const CreateHotel = () => {
         axios
             .post(`https://636b1db9b10125b78feba23b.mockapi.io/${location}`, obj)
             .then(() => {
-
+                toast({
+                    title: `Hotel Created Successfully!!`,
+                    status: "success",
+                    duration: 1000,
+                    position: "top",
+                    isClosable: true,
+                  })
+                  navigate('/')
             }).catch(() => {
                 alert("Page Not Found")
             })

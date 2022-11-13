@@ -18,6 +18,7 @@ import {
   Button,
   useDisclosure,
   Wrap,
+  useToast,
 } from "@chakra-ui/react";
 import { BsFillGeoAltFill } from "react-icons/bs";
 import { useState } from "react";
@@ -33,6 +34,7 @@ const SearchBar = () => {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [location, setLocation] = useState("");
   const initRef = useRef();
+  const toast = useToast();
   const Room = () => {
     return (
       <>
@@ -91,7 +93,6 @@ const SearchBar = () => {
   };
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleSearch = () => {
     const payload = {
       location: location,

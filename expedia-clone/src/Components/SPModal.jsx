@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Box,
   Button,
@@ -13,8 +13,10 @@ import {
   RadioGroup,
   Stack,
   Text,
+  Toast,
   UnorderedList,
   useDisclosure,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import {
@@ -26,11 +28,30 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const SPModal = ({ price1 }) => {
+  const toast = useToast()
   const { id } = useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  const Navigate = useNavigate();
+  const handlePayment = () => {
+    if (isAuth) {
+      Navigate(`/hotels/${id}/checkout`);
+    }else{
+     toast({
+      title: `Please LogIn first!`,
+      status: "error",
+      duration: 1000,
+      position: "top",
+      isClosable: true,
+    })
+    Navigate('/login')
+    }
+  };
   return (
     <>
       <Button
@@ -87,17 +108,16 @@ const SPModal = ({ price1 }) => {
                 <Text fontWeight="700" fontSize="1.5rem" align="end">
                   ₹{price1}
                 </Text>
-                <Link to={`/hotels/${id}/checkout`}>
-                  <Button
-                    bg="#3662D8"
-                    color="white"
-                    _hover={{ bg: "#31087B" }}
-                    my="1rem"
-                    align="end"
-                  >
-                    Pay Now
-                  </Button>
-                </Link>
+                <Button
+                  onClick={handlePayment}
+                  bg="#3662D8"
+                  color="white"
+                  _hover={{ bg: "#31087B" }}
+                  my="1rem"
+                  align="end"
+                >
+                  Pay Now
+                </Button>
               </Box>
             </HStack>
             <HStack>
@@ -121,8 +141,8 @@ const SPModal = ({ price1 }) => {
                 <Text fontWeight="700" fontSize="1.5rem" align="end">
                   ₹{price1}
                 </Text>
-                <Link to={`/hotels/${id}/checkout`}>
                 <Button
+                  onClick={handlePayment}
                   bg="#3662D8"
                   color="white"
                   _hover={{ bg: "#31087B" }}
@@ -130,7 +150,6 @@ const SPModal = ({ price1 }) => {
                 >
                   Pay at Property
                 </Button>
-                </Link>
               </Box>
             </HStack>
           </ModalBody>
@@ -138,6 +157,6 @@ const SPModal = ({ price1 }) => {
       </Modal>
     </>
   );
-}
+};
 
-export default SPModal
+export default SPModal;
