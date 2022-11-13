@@ -55,11 +55,23 @@ function Navbar() {
   }, shallowEqual);
 
   const handleTrip = () => {
-    if (isAuth) Navigate("/");
+    if (isAuth) Navigate("/trips");
     else
       toast({
         title: "Please Sign in !!!",
         status: "info",
+        duration: 1000,
+        isClosable: true,
+        position: "top",
+      });
+  };
+
+  const handleAdmin = () => {
+    if (isAuth && userData.userType === "admin") Navigate("/admin");
+    else
+      toast({
+        title: "Restricted for admins only !!!",
+        status: "error",
         duration: 1000,
         isClosable: true,
         position: "top",
@@ -268,8 +280,10 @@ function Navbar() {
                     _hover={{ color: hoverColor }}
                     fontSize="18px"
                     fontWeight="500"
+                    cursor="pointer"
+                    onClick={() => handleAdmin()}
                   >
-                    <Link>Admin Support</Link>
+                    Admin Support
                   </Text>
                   <Text
                     cursor="pointer"

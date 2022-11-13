@@ -90,6 +90,7 @@ const SearchBar = () => {
   };
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSearch = () => {
     const payload = {
       location: location,
