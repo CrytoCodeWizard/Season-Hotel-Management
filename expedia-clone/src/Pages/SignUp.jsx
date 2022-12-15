@@ -28,17 +28,14 @@ export default function CreateAccount() {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [userType, setUserType] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
 
-  const { userData, successfullyCreated, createAccountError } = useSelector(
-    (state) => {
-      return {
-        userData: state.AuthReducer.userData,
-        successfullyCreated: state.AuthReducer.successfullyCreated,
-        createAccountError: state.AuthReducer.createAccountError,
-      };
-    },
-    shallowEqual
-  );
+  const { successfullyCreated, createAccountError } = useSelector((state) => {
+    return {
+      successfullyCreated: state.AuthReducer.successfullyCreated,
+      createAccountError: state.AuthReducer.createAccountError,
+    };
+  }, shallowEqual);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -64,7 +61,7 @@ export default function CreateAccount() {
         navigate("/login");
       }, 2000);
     }
-  }, [successfullyCreated]);
+  }, [successfullyCreated, toast, navigate]);
 
   useEffect(() => {
     if (createAccountError) {
@@ -76,7 +73,7 @@ export default function CreateAccount() {
         isClosable: true,
       });
     }
-  }, [createAccountError]);
+  }, [createAccountError, toast]);
 
   function SendSignInRequest() {
     dispatch(
@@ -85,6 +82,7 @@ export default function CreateAccount() {
         password: password,
         userName: userName,
         userType: userType,
+        employeeId: employeeId,
       })
     );
     setEmail("");
@@ -167,6 +165,23 @@ export default function CreateAccount() {
               <option value="customer">Customer</option>
               <option value="admin">Admin</option>
             </Select>
+
+            {userType === "admin" ? (
+              <>
+                <FormLabel htmlFor="email">Enter Employee Id</FormLabel>
+                <Input
+                  onChange={(e) => setEmployeeId(e.target.value)}
+                  placeholder="Enter Email address"
+                  w={"100%"}
+                  h={"40px"}
+                  value={employeeId}
+                  border={`2px solid`}
+                  type={"text"}
+                  id="employeeId"
+                />
+              </>
+            ) : null}
+
             {/* password */}
             <FormLabel htmlFor="password">Enter Password</FormLabel>
             <Input
@@ -179,6 +194,7 @@ export default function CreateAccount() {
               type={"password"}
               mb={"8px"}
               id="password"
+              isRequired
             />
             <Checkbox size={"lg"} defaultChecked>
               Keep me signed in

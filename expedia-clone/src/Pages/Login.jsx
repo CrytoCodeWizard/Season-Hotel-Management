@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AiFillApple } from "react-icons/ai"; // FcGoogle
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook } from "react-icons/ai";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Loginfunction } from "../Redux/AuthContext/action";
 
@@ -16,6 +16,7 @@ import {
   FormHelperText,
   Heading,
   Input,
+  Select,
   Spinner,
   Text,
   useMediaQuery,
@@ -27,15 +28,15 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(true);
   const [userObj, setUserObj] = useState([]);
   const [email, setEmail] = useState("");
+  const [userType, setUserType] = useState("");
   const [password, setPassword] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
 
-  const { userData, isAuth, isError } = useSelector((state) => {
+  const { isAuth } = useSelector((state) => {
     return {
-      userData: state.AuthReducer.userData,
       isAuth: state.AuthReducer.isAuth,
-      isError: state.AuthReducer.isError,
     };
-  }, shallowEqual);
+  });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ export default function Login() {
         navigate("/");
       }, 1500);
     }
-  }, [isAuth]);
+  }, [isAuth, navigate, toast]);
 
   useEffect(() => {
     axios
@@ -77,23 +78,56 @@ export default function Login() {
   const SendSignInRequest = () => {
     let check;
 
+    /* Checking the email */
     let checkEmail = userObj.filter((el) => {
       return el.email === email;
     });
 
+    /* if email is right ,Checking the password */
     if (checkEmail.length > 0) {
-      check = userObj.filter((el) => {
+      let checkPassword = userObj.filter((el) => {
         return el.email === email && el.password === password;
       });
       //console.log(check[0]);
 
-      if (check.length > 0) {
-        dispatch(
-          Loginfunction({
-            ...check[0],
-          })
-        );
-      } else if (check.length === 0) {
+      /* if email and password is right ,Checking the userType */
+      if (checkPassword.length > 0) {
+        /* if userType is admin checking the employeeId */
+        if (checkPassword[0].userType === "admin") {
+          check = userObj.filter((el) => {
+            return (
+              el.email === email &&
+              el.password === password &&
+              el.employeeId === employeeId
+            );
+          });
+          /* if employee is is correct */
+          if (check.length > 0) {
+            dispatch(
+              Loginfunction({
+                ...check[0],
+              })
+            );
+          } else if (check.length === 0) {
+            /*if employee id is not correct */
+            toast({
+              title: `Invalid Employee Id !!!`,
+              status: "error",
+              duration: 1500,
+              position: "top",
+              isClosable: true,
+            });
+          }
+        } else if (checkPassword[0].userType === "customer") {
+          /* if userType is customer disaptch */
+          dispatch(
+            Loginfunction({
+              ...checkPassword[0],
+            })
+          );
+        }
+      } else if (checkPassword.length === 0) {
+        /* if password is wrong */
         toast({
           title: `Wrong Password !!!`,
           status: "error",
@@ -103,6 +137,7 @@ export default function Login() {
         });
       }
     } else {
+      /* if email is not found */
       toast({
         title: `User not registered !!!`,
         status: "error",
@@ -113,6 +148,7 @@ export default function Login() {
     }
     setEmail("");
     setPassword("");
+    setUserType("");
   };
 
   return (
@@ -161,6 +197,36 @@ export default function Login() {
             <FormHelperText mb={"8px"}>
               We'll never share your email.
             </FormHelperText>
+
+            <Select
+              onChange={(e) => setUserType(e.target.value)}
+              width={"100%"}
+              h={"40px"}
+              border={`2px solid`}
+              mb={"8px"}
+              value={userType}
+              id="userType"
+            >
+              <option value="">Choose User Type</option>
+              <option value="customer">Customer</option>
+              <option value="admin">Admin</option>
+            </Select>
+
+            {userType === "admin" ? (
+              <>
+                <FormLabel htmlFor="email">Enter Employee Id</FormLabel>
+                <Input
+                  onChange={(e) => setEmployeeId(e.target.value)}
+                  placeholder="Enter Email address"
+                  w={"100%"}
+                  h={"40px"}
+                  value={employeeId}
+                  border={`2px solid`}
+                  type={"text"}
+                  id="employeeId"
+                />
+              </>
+            ) : null}
 
             {/* password */}
             <FormLabel htmlFor="password">Enter Password</FormLabel>
