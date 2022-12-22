@@ -10,8 +10,9 @@ import SPAmenities from "../Components/SPAmenities";
 import SPReviews from "../Components/SPReviews";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { getHotels } from "../Redux/AppContext/action";
+import { Link } from "@chakra-ui/react";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -44,36 +45,51 @@ const SingleProduct = () => {
             img4={currentHotel.img4}
           />
           <Box my="1rem">
-            <Tabs variant="line" align="Start">
+            <Tabs
+              variant="line"
+              align="Start"
+              isFitted="true"
+              position="-webkit-sticky"
+            >
               <TabList>
-                <Tab>Overview</Tab>
-                <Tab>Rooms</Tab>
-                <Tab>Location</Tab>
+                <Tab>
+                  <Link href="#overview">Overview</Link>
+                </Tab>
+                <Tab>
+                  <Link href="#rooms">Rooms</Link>
+                </Tab>
+                <Tab>
+                  <Link href="#locations">Locations</Link>
+                </Tab>
 
-                <Tab>Amenities</Tab>
+                <Tab>
+                  <Link href="#amenities">Amenities</Link>
+                </Tab>
 
-                <Tab>Policies</Tab>
-
-                <Tab>Reviews</Tab>
+                <Tab>
+                  <Link href="#reviews">Reviews</Link>
+                </Tab>
               </TabList>
             </Tabs>
           </Box>
-          <Overview
-            name={currentHotel.heading1}
-            rating={currentHotel.rating}
-            review={currentHotel.review}
-          />
+          <Box w="100%" h="auto" my="1rem" id="overview">
+            <Overview
+              name={currentHotel.heading1}
+              rating={currentHotel.rating}
+              review={currentHotel.review}
+            />
+          </Box>
         </Box>
-        <Box w="100%" h="auto" my="1rem">
+        <Box w="100%" h="auto" my="1rem" id="rooms">
           <Rooms price1={currentHotel.price1} price2={currentHotel.price2} />
         </Box>
-        <Box w="100%" h="auto" my="1rem">
+        <Box w="100%" h="auto" my="1rem" id="locations">
           <SPLocation name={currentHotel.heading1} />
         </Box>
-        <Box w="100%" h="auto" my="1.2rem">
+        <Box w="100%" h="auto" my="1.2rem" id="amenities">
           <SPAmenities />
         </Box>
-        <Box w="100%" h="auto" my="1rem">
+        <Box w="100%" h="auto" my="1rem" id="reviews">
           <SPReviews
             rating={currentHotel.rating}
             review={currentHotel.review}
