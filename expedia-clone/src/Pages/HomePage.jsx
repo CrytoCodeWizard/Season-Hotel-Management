@@ -137,10 +137,8 @@ const HomePage = () => {
             src="https://tpc.googlesyndication.com/simgad/4477719789317755579?"
           />
         </Center>
-        <br />
-        <Center>
-          <Image w='60%' src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/free-hotel-poster-template-dc3bc203592c8216b7ff611302068dc8_screen.jpg?ts=1561439881" />
-        </Center>
+
+
         <br />
         <HomePageSlider />
         <br />
