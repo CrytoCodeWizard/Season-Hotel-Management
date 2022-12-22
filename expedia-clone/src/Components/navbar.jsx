@@ -194,8 +194,6 @@ function Navbar() {
         zIndex={10}
         borderBottom="1px"
         borderBottomColor="#c5c7cc"
-        position="sticky"
-        top="0"
       >
         <Container maxW="container.xl">
           <Stack direction="row">

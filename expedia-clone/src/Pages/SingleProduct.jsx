@@ -44,52 +44,55 @@ const SingleProduct = () => {
             img3={currentHotel.img3}
             img4={currentHotel.img4}
           />
-          <Box my="1rem">
-            <Tabs
-              variant="line"
-              align="Start"
-              isFitted="true"
-              position="-webkit-sticky"
-            >
-              <TabList>
-                <Tab>
-                  <Link href="#overview">Overview</Link>
-                </Tab>
-                <Tab>
-                  <Link href="#rooms">Rooms</Link>
-                </Tab>
-                <Tab>
-                  <Link href="#locations">Locations</Link>
-                </Tab>
-
-                <Tab>
-                  <Link href="#amenities">Amenities</Link>
-                </Tab>
-
-                <Tab>
-                  <Link href="#reviews">Reviews</Link>
-                </Tab>
-              </TabList>
-            </Tabs>
-          </Box>
-          <Box w="100%" h="auto" my="1rem" id="overview">
-            <Overview
-              name={currentHotel.heading1}
-              rating={currentHotel.rating}
-              review={currentHotel.review}
-            />
-          </Box>
         </Box>
-        <Box w="100%" h="auto" my="1rem" id="rooms">
+        <Box
+          my="1rem"
+          top="0"
+          overflow="hidden"
+          bg="white"
+          position="sticky"
+          zIndex={10}
+        >
+          <Tabs variant="line" align="Start">
+            <TabList>
+              <Tab>
+                <Link href="#overview">Overview</Link>
+              </Tab>
+              <Tab>
+                <Link href="#rooms">Rooms</Link>
+              </Tab>
+              <Tab>
+                <Link href="#locations">Locations</Link>
+              </Tab>
+
+              <Tab>
+                <Link href="#amenities">Amenities</Link>
+              </Tab>
+
+              <Tab>
+                <Link href="#reviews">Reviews</Link>
+              </Tab>
+            </TabList>
+          </Tabs>
+        </Box>
+        <Box w="100%" h="auto" my="0.5rem" id="overview" paddingTop="2rem">
+          <Overview
+            name={currentHotel.heading1}
+            rating={currentHotel.rating}
+            review={currentHotel.review}
+          />
+        </Box>
+
+        <Box w="100%" h="auto" my="0.5rem" id="rooms" paddingTop="2rem">
           <Rooms price1={currentHotel.price1} price2={currentHotel.price2} />
         </Box>
-        <Box w="100%" h="auto" my="1rem" id="locations">
+        <Box w="100%" h="auto" my="0.5rem" id="locations" paddingTop="2rem">
           <SPLocation name={currentHotel.heading1} />
         </Box>
-        <Box w="100%" h="auto" my="1.2rem" id="amenities">
+        <Box w="100%" h="auto" my="0.5rem" id="amenities" paddingTop="2rem">
           <SPAmenities />
         </Box>
-        <Box w="100%" h="auto" my="1rem" id="reviews">
+        <Box w="100%" h="auto" my="0.5rem" id="reviews" paddingTop="2rem">
           <SPReviews
             rating={currentHotel.rating}
             review={currentHotel.review}
