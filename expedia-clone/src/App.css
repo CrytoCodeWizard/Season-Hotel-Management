@@ -66,3 +66,13 @@
     padding: 7px 20px;
   }
 }
+
+.crausal{
+  height: auto;
+  width: 55%;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
