@@ -1,14 +1,14 @@
-import { Box, HStack, Text } from '@chakra-ui/react'
-import React from 'react'
-import { AiOutlineWifi } from "react-icons/ai"
+import { Box, HStack, Text } from "@chakra-ui/react";
+import React from "react";
+import { AiOutlineWifi } from "react-icons/ai";
 import {
   MdLocalParking,
   MdOutlineRestaurantMenu,
   MdLocalConvenienceStore,
+  MdOutlineBathroom,
 } from "react-icons/md";
-import { IoIosToday } from "react-icons/io"
+import { IoIosToday } from "react-icons/io";
 import { FaSpa, FaUmbrellaBeach, FaWheelchair } from "react-icons/fa";
-
 
 const SPAmenities = () => {
   return (
@@ -99,6 +99,24 @@ const SPAmenities = () => {
           <Text>Library </Text>
           <Text>Vending machine</Text>
         </Box>
+        <HStack>
+          <MdOutlineBathroom />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            Bathroom
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>Dressing gowns</Text>
+          <Text>Designer toiletries</Text>
+          <Text>Hairdryer </Text>
+          <Text>Private bathroom </Text>
+          <Text>Rainfall showerhead </Text>
+          <Text>Separate bath and shower </Text>
+          <Text>Shampoo</Text>
+          <Text>Soap </Text>
+          <Text>Toilet paper </Text>
+          <Text>Towels</Text>
+        </Box>
       </Box>
       <Box w="34%" align="initial">
         <HStack>
@@ -178,6 +196,6 @@ const SPAmenities = () => {
       </Box>
     </Box>
   );
-}
+};
 
-export default SPAmenities
+export default SPAmenities;

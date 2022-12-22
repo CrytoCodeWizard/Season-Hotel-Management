@@ -56,21 +56,56 @@ const SingleProduct = () => {
           <Tabs variant="line" align="Start">
             <TabList>
               <Tab>
-                <Link href="#overview">Overview</Link>
+                <Link
+                  href="#overview"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Overview
+                </Link>
               </Tab>
               <Tab>
-                <Link href="#rooms">Rooms</Link>
+                <Link
+                  href="#rooms"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Rooms
+                </Link>
               </Tab>
               <Tab>
-                <Link href="#locations">Locations</Link>
+                <Link
+                  href="#locations"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Locations
+                </Link>
               </Tab>
 
               <Tab>
-                <Link href="#amenities">Amenities</Link>
+                <Link
+                  href="#amenities"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Amenities
+                </Link>
               </Tab>
 
               <Tab>
-                <Link href="#reviews">Reviews</Link>
+                <Link
+                  href="#reviews"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Reviews
+                </Link>
               </Tab>
             </TabList>
           </Tabs>
