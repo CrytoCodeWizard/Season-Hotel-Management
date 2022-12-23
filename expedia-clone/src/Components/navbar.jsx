@@ -110,12 +110,26 @@ function Navbar() {
           >
             Create a free account here
           </Button>
-          <Link mt={5} to="#">
-            <Text _hover={{ color: hoverColor }}>Lists of favourites</Text>
-          </Link>
-          <Link to="#" mt={5}>
-            <Text _hover={{ color: hoverColor }}>Expedia rewards</Text>
-          </Link>
+
+          <Button
+            mt={2.5}
+            mb={2.5}
+            w="100%"
+            colorScheme="blue"
+            onClick={() => Navigate("/list")}
+          >
+            Lists of favourites
+          </Button>
+
+          <Button
+            mt={2.5}
+            mb={2.5}
+            w="100%"
+            colorScheme="blue"
+            onClick={() => Navigate("/rewards")}
+          >
+            Expedia rewards
+          </Button>
         </PopoverBody>
         <PopoverFooter>
           <Link to="#" mt={5}>
