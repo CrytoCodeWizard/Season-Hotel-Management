@@ -10,6 +10,8 @@ import {
   Radio,
   Stack,
   Select,
+  useToast,
+  Image,
 } from "@chakra-ui/react";
 import React from "react";
 import { useEffect } from "react";
@@ -20,8 +22,11 @@ import SearchBar from "../Components/SearchBar";
 import SimpleCard from "../Components/SimpleCard";
 const Hotels = () => {
   const hotels = useSelector((state) => state.AppReducer.hotels);
+  const error = useSelector((state) => state.AppReducer.isError);
+  let errormsg = useSelector((state) => state.AppReducer.isError);
   const [filtered, setFiltered] = useState([]);
   const [price, setPrice] = useState(0);
+  const toast = useToast();
   useEffect(() => {
     let p;
     if (price === 0) {
@@ -40,6 +45,17 @@ const Hotels = () => {
     });
     setFiltered(hotels);
   };
+  if (errormsg===true) {
+    toast({
+      title: "City Not Found.",
+      description: "We're not present in this city.",
+      status: "error",
+      duration: 1000,
+      isClosable: true,
+      position:"top",
+    });
+    errormsg= false;
+  }
   return (
     <>
       <div style={{ backgroundColor: "#f8f5f4" }}>
@@ -118,7 +134,20 @@ const Hotels = () => {
               </Flex>
             </Flex>
           </Box>
-          <Grid marginLeft="0px" width={"80%"} templateColumns={"1"} gap={4}>
+          <Grid
+            marginLeft="0px"
+            width={"80%"}
+            templateColumns={"1"}
+            gap={4}
+            
+          >
+            {error && (
+              <Box w="-moz-fit-content"  mx="auto" my="5px">
+                <Box>
+                  <Image src="https://i.ibb.co/QmrLxDF/not-found.png" />
+                </Box>
+              </Box>
+            )}
             {filtered.length > 0 &&
               filtered.map((item) => {
                 return (

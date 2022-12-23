@@ -1,15 +1,22 @@
-import { AspectRatio, Box, Button, Collapse, Divider, HStack, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import {
+  AspectRatio,
+  Box,
+  Button,
+  Collapse,
+  Divider,
+  HStack,
+  Text,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 import { MdLocationPin, MdSocialDistance } from "react-icons/md";
 import { AiFillCar, AiOutlineCheck } from "react-icons/ai";
 import { FaBusAlt, FaPlane } from "react-icons/fa";
-import {TbNorthStar}from "react-icons/tb"
+import { TbNorthStar } from "react-icons/tb";
 
-const SPLocation = ({name}) => {
+const SPLocation = ({ name }) => {
+  const [show, setShow] = useState(false);
 
-    const [show, setShow] = useState(false);
-
-    const handleToggle = () => setShow(!show);
+  const handleToggle = () => setShow(!show);
   return (
     <>
       <Box display="flex" bg="white" my="2rem" fontSize="0.9rem">
@@ -156,13 +163,36 @@ const SPLocation = ({name}) => {
             </HStack>
 
             <Box p="1rem">
+              <Text>Personal protective equipment worn by staff </Text>
+              <Text>Temperature checks given to staff </Text>
+              <Text>Temperature checks available for guests </Text>
+              <Text>Masks and gloves available </Text>
+              <Text>Hand sanitiser provided </Text>
+              <Text>Enhanced food service safety measures are in place </Text>
+              <Text>
+                Individually wrapped food options available for breakfast,
+                lunch, dinner and through room service
+              </Text>
+            </Box>
+            <HStack>
+              <AiOutlineCheck />
+              <Text fontSize="1.2rem" fontWeight="500" align="initial">
+                Check-in
+              </Text>
+            </HStack>
+
+            <Box p="1rem">
               <Text>Hand sanitiser provided</Text>
+              <Text>Contactless social distancing and check-out </Text>
+              <Text>Protective shields in place at main contact areas </Text>
+              <Text>Guest rooms kept vacant for 24 hours between stays </Text>
+              <Text>Social distancing measures in place</Text>
             </Box>
           </Box>
         </Box>
       </Box>
     </>
   );
-}
+};
 
-export default SPLocation
+export default SPLocation;

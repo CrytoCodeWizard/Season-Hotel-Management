@@ -17,11 +17,13 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        isError: false,
       };
     case types.GET_HOTELS_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        isError: false,
         hotels: payload.hotels,
         rooms: payload.rooms,
         adults: payload.adults,
@@ -34,6 +36,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
+        hotels:[],
       };
     default:
       return state;

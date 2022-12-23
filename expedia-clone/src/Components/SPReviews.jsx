@@ -1,10 +1,10 @@
 import { Box, Divider, HStack, Link, Progress, Text } from "@chakra-ui/react";
 import React from "react";
-import{AiFillLike} from "react-icons/ai"
+import { AiFillLike } from "react-icons/ai";
 
-const SPReviews = ({review,rating}) => {
+const SPReviews = ({ review, rating }) => {
   return (
-    <Box w="100%" display="flex" p="1rem" bg="white" >
+    <Box w="100%" display="flex" p="1rem" bg="white">
       <Box w="35%" align="initial" p="1rem">
         <Box>
           <HStack>
@@ -124,7 +124,7 @@ const SPReviews = ({review,rating}) => {
           </Box>
         </Box>
       </Box>
-      <Box w="65%" align="initial"  p="1rem">
+      <Box w="65%" align="initial" p="1rem">
         <Box w="100%">
           <Text fontSize="1.3rem" fontWeight={"500"}>
             5/5 Excellent
@@ -196,6 +196,84 @@ const SPReviews = ({review,rating}) => {
           </Text>
           <Text fontSize="0.7rem" lineHeight={"1.9rem"}>
             Stayed 3 nights in Aug 2022
+          </Text>
+          <AiFillLike />
+        </Box>
+        <Divider my="1rem" />
+        <Box w="100%">
+          <Text fontSize="1.3rem" fontWeight={"500"}>
+            4.2/5 Excellent
+          </Text>
+          <Text fontSize="0.9rem" fontWeight={"500"}>
+            Pratiksha
+          </Text>
+          <Text fontSize="0.9rem">23 Nov 2022</Text>
+          <br />
+
+          <Text fontSize="0.9rem">
+            Clean and functional with nice pool and good food. A couple small
+            misses with service, and a lingering musty smell due to not running
+            A/C when not in room
+          </Text>
+          <Text fontSize="0.7rem" lineHeight={"1.9rem"}>
+            Stayed 2 nights in Nov 2022
+          </Text>
+          <AiFillLike />
+        </Box>
+        <Divider my="1rem" />
+        <Box w="100%">
+          <Text fontSize="1.3rem" fontWeight={"500"}>
+            4/5 Excellent
+          </Text>
+          <Text fontSize="0.9rem" fontWeight={"500"}>
+            John F
+          </Text>
+          <Text fontSize="0.9rem">15 Nov 2022</Text>
+          <br />
+
+          <Text fontSize="0.9rem">
+            What an amazing hotel. Staff were simply lovely
+          </Text>
+          <Text fontSize="0.7rem" lineHeight={"1.9rem"}>
+            Stayed 2 nights in Nov 2022
+          </Text>
+          <AiFillLike />
+        </Box>
+        <Divider my="1rem" />
+        <Box w="100%">
+          <Text fontSize="1.3rem" fontWeight={"500"}>
+            4.6/5 Excellent
+          </Text>
+          <Text fontSize="0.9rem" fontWeight={"500"}>
+            Priyanka
+          </Text>
+          <Text fontSize="0.9rem">29 Nov 2022</Text>
+          <br />
+
+          <Text fontSize="0.9rem">
+            It was excellent, gorgeous views and incredibly helpful staff.
+          </Text>
+          <Text fontSize="0.7rem" lineHeight={"1.9rem"}>
+            Stayed 1 nights in Nov 2022
+          </Text>
+          <AiFillLike />
+        </Box>
+        <Divider my="1rem" />
+        <Box w="100%">
+          <Text fontSize="1.3rem" fontWeight={"500"}>
+            3.0/5 Excellent
+          </Text>
+          <Text fontSize="0.9rem" fontWeight={"500"}>
+            Wasim
+          </Text>
+          <Text fontSize="0.9rem">29 Nov 2022</Text>
+          <br />
+
+          <Text fontSize="0.9rem">
+            he room was terrible, the TV was not working properly
+          </Text>
+          <Text fontSize="0.7rem" lineHeight={"1.9rem"}>
+            Stayed 1 nights in Nov 2022
           </Text>
           <AiFillLike />
         </Box>

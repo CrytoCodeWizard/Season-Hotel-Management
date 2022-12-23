@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as types from "./actionTypes";
+import { useToast } from "@chakra-ui/react";
 const getHotelsRequest = () => {
   return {
     type: types.GET_HOTELS_REQUEST,
@@ -27,7 +28,15 @@ const getHotels = (payload) => (dispatch) => {
     })
     .catch((e) => {
       dispatch(getHotelsFailure(e));
-      alert("City not found");
+      const toast = useToast();
+      toast({
+        title: "City Not Found.",
+        description: "We're not present in this city.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     });
 };
 

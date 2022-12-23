@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, TabList,  Tab,  } from "@chakra-ui/react";
 import SPImages from "../Components/SPImages";
 import Overview from "../Components/Overview";
 import Rooms from "../Components/Rooms";
@@ -13,11 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {  useParams } from "react-router-dom";
 import { getHotels } from "../Redux/AppContext/action";
 import { Link } from "@chakra-ui/react";
+import SPPolicies from "../Components/SPPolicies";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  //const isAuth = useSelector((state) => state.AuthReducer.isAuth);
   const [currentHotel, setCurrentHotel] = useState({});
   const hotels = useSelector((state) => state.AppReducer.hotels);
   useEffect(() => {
@@ -96,6 +97,16 @@ const SingleProduct = () => {
                   Amenities
                 </Link>
               </Tab>
+              <Tab>
+                <Link
+                  href="#policies"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Policies
+                </Link>
+              </Tab>
 
               <Tab>
                 <Link
@@ -119,13 +130,16 @@ const SingleProduct = () => {
         </Box>
 
         <Box w="100%" h="auto" my="0.5rem" id="rooms" paddingTop="2rem">
-          <Rooms price1={currentHotel.price1} price2={currentHotel.price2} />
+          <Rooms price1={Number(currentHotel.price2)} />
         </Box>
         <Box w="100%" h="auto" my="0.5rem" id="locations" paddingTop="2rem">
           <SPLocation name={currentHotel.heading1} />
         </Box>
         <Box w="100%" h="auto" my="0.5rem" id="amenities" paddingTop="2rem">
           <SPAmenities />
+        </Box>
+        <Box w="100%" h="auto" my="0.5rem" id="policies" paddingTop="2rem">
+          <SPPolicies />
         </Box>
         <Box w="100%" h="auto" my="0.5rem" id="reviews" paddingTop="2rem">
           <SPReviews
