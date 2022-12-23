@@ -10,8 +10,9 @@ import SPAmenities from "../Components/SPAmenities";
 import SPReviews from "../Components/SPReviews";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { getHotels } from "../Redux/AppContext/action";
+import { Link } from "@chakra-ui/react";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -43,37 +44,90 @@ const SingleProduct = () => {
             img3={currentHotel.img3}
             img4={currentHotel.img4}
           />
-          <Box my="1rem">
-            <Tabs variant="line" align="Start">
-              <TabList>
-                <Tab>Overview</Tab>
-                <Tab>Rooms</Tab>
-                <Tab>Location</Tab>
+        </Box>
+        <Box
+          my="1rem"
+          top="0"
+          overflow="hidden"
+          bg="white"
+          position="sticky"
+          zIndex={10}
+        >
+          <Tabs variant="line" align="Start">
+            <TabList>
+              <Tab>
+                <Link
+                  href="#overview"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Overview
+                </Link>
+              </Tab>
+              <Tab>
+                <Link
+                  href="#rooms"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Rooms
+                </Link>
+              </Tab>
+              <Tab>
+                <Link
+                  href="#locations"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Locations
+                </Link>
+              </Tab>
 
-                <Tab>Amenities</Tab>
+              <Tab>
+                <Link
+                  href="#amenities"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Amenities
+                </Link>
+              </Tab>
 
-                <Tab>Policies</Tab>
-
-                <Tab>Reviews</Tab>
-              </TabList>
-            </Tabs>
-          </Box>
+              <Tab>
+                <Link
+                  href="#reviews"
+                  fontWeight={500}
+                  fontSize="0.95rem"
+                  lineHeight="1.2rem"
+                >
+                  Reviews
+                </Link>
+              </Tab>
+            </TabList>
+          </Tabs>
+        </Box>
+        <Box w="100%" h="auto" my="0.5rem" id="overview" paddingTop="2rem">
           <Overview
             name={currentHotel.heading1}
             rating={currentHotel.rating}
             review={currentHotel.review}
           />
         </Box>
-        <Box w="100%" h="auto" my="1rem">
+
+        <Box w="100%" h="auto" my="0.5rem" id="rooms" paddingTop="2rem">
           <Rooms price1={currentHotel.price1} price2={currentHotel.price2} />
         </Box>
-        <Box w="100%" h="auto" my="1rem">
+        <Box w="100%" h="auto" my="0.5rem" id="locations" paddingTop="2rem">
           <SPLocation name={currentHotel.heading1} />
         </Box>
-        <Box w="100%" h="auto" my="1.2rem">
+        <Box w="100%" h="auto" my="0.5rem" id="amenities" paddingTop="2rem">
           <SPAmenities />
         </Box>
-        <Box w="100%" h="auto" my="1rem">
+        <Box w="100%" h="auto" my="0.5rem" id="reviews" paddingTop="2rem">
           <SPReviews
             rating={currentHotel.rating}
             review={currentHotel.review}
