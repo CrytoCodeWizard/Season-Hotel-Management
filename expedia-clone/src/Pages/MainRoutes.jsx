@@ -11,6 +11,8 @@ import Login from "./Login";
 import ProfileEdit from "./ProfileEdit";
 import ConfirmBooking from "./ConfirmBooking";
 import Trips from "./Trips";
+import List from "./List";
+import Rewards from "./Rewards";
 const MainRoutes = () => {
   return (
     <div>
@@ -25,6 +27,8 @@ const MainRoutes = () => {
         <Route path="/admin" element={<CreateHotel />} />
         <Route path="/bookingConfirmed" element={<ConfirmBooking />} />
         <Route path="/trips" element={<Trips />} />
+        <Route path="/list" element={<List />} />
+        <Route path="/rewards" element={<Rewards />} />
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>
