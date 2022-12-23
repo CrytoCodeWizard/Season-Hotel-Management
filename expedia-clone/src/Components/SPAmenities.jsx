@@ -1,14 +1,18 @@
 import { Box, HStack, Text } from "@chakra-ui/react";
 import React from "react";
-import { AiOutlineWifi } from "react-icons/ai";
+import { AiOutlineWifi, AiOutlineCheck } from "react-icons/ai";
 import {
   MdLocalParking,
   MdOutlineRestaurantMenu,
   MdLocalConvenienceStore,
   MdOutlineBathroom,
+  MdFamilyRestroom,
+  MdBusinessCenter,
+  MdPerson,
 } from "react-icons/md";
 import { IoIosToday } from "react-icons/io";
-import { FaSpa, FaUmbrellaBeach, FaWheelchair } from "react-icons/fa";
+import { FaSpa, FaUmbrellaBeach, FaWheelchair, FaBed } from "react-icons/fa";
+import { SiDcentertainment } from "react-icons/si";
 
 const SPAmenities = () => {
   return (
@@ -80,10 +84,14 @@ const SPAmenities = () => {
           </Text>
         </HStack>
         <Box p="1.2rem">
-          <Text>24-hour fitness centre</Text>
-          <Text>24-hour pool access Children's pool </Text>
-          <Text>Full-service spa Nightclub Outdoor pool </Text>
-          <Text>Sauna Hot tub Steam room</Text>
+          <Text>Free pool cabanas </Text>
+          <Text>24-hour fitness centre </Text>
+          <Text>Full-service spa </Text>
+          <Text>Playground </Text>
+          <Text>Sauna </Text>
+          <Text>Shopping </Text>
+          <Text>Steam room </Text>
+          <Text>Swimming pool</Text>
         </Box>
         <HStack>
           <MdLocalConvenienceStore />
@@ -116,6 +124,53 @@ const SPAmenities = () => {
           <Text>Soap </Text>
           <Text>Toilet paper </Text>
           <Text>Towels</Text>
+        </Box>
+        <HStack>
+          <MdFamilyRestroom />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            Family friendly
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>Free cots/infant beds </Text>
+          <Text>Corner/local shop </Text>
+          <Text>Laundry facilities </Text>
+          <Text>Playground </Text>
+          <Text>Rollaway/extra beds (surcharge) </Text>
+          <Text>Snack bar/deli </Text>
+          <Text>Soundproofed rooms</Text>
+        </Box>
+
+        <HStack>
+          <FaBed />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            Bedroom
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>Air conditioning </Text>
+          <Text>Bed sheets </Text>
+          <Text>Blackout drapes/curtains </Text>
+          <Text>Egyptian cotton sheets </Text>
+          <Text>Free cots/infant beds </Text>
+          <Text>Heating </Text>
+          <Text>Pillow menu </Text>
+          <Text>Pillow-top mattress </Text>
+          <Text>Premium bedding </Text>
+          <Text>Rollaway/extra beds (surcharge)</Text>
+        </Box>
+        <HStack>
+          <SiDcentertainment />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            Entertainment
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>iPad dock</Text>
+          <Text>42-inch flat-screen TV </Text>
+          <Text>MP3 dock </Text>
+          <Text>DVD player </Text>
+          <Text>Satellite channels</Text>
         </Box>
       </Box>
       <Box w="34%" align="initial">
@@ -192,6 +247,56 @@ const SPAmenities = () => {
           <Text>Wheelchair-accessible spa </Text>
           <Text>Wheelchair-accessible van parking </Text>
           <Text>Wheelchair accessible (may have limitations)</Text>
+        </Box>
+
+        <HStack>
+          <MdBusinessCenter />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            Business services
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>24-hour business centre </Text>
+          <Text>Computer station </Text>
+          <Text>Conference centre </Text>
+          <Text>Meeting rooms - 9</Text>
+        </Box>
+        <HStack>
+          <AiOutlineCheck />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            More
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>Connecting rooms available </Text>
+          <Text>Desk </Text>
+          <Text>Desk chair </Text>
+          <Text>Free newspapers </Text>
+          <Text>Iron/ironing board </Text>
+          <Text>Laptop-friendly workspace </Text>
+          <Text>Safe </Text>
+          <Text>Slippers </Text>
+          <Text>Soundproofing </Text>
+          <Text>Turndown service</Text>
+        </Box>
+
+        <HStack>
+          <MdPerson />
+          <Text fontSize="1.2rem" fontWeight="500" align="initial">
+            Guest services
+          </Text>
+        </HStack>
+        <Box p="1.2rem">
+          <Text>24-hour front desk </Text>
+          <Text>Concierge services </Text>
+          <Text>Daily housekeeping </Text>
+          <Text>Dry-cleaning service </Text>
+          <Text>Hair salon </Text>
+          <Text>Laundry facilities </Text>
+          <Text>Luggage storage </Text>
+          <Text>Tour/ticket assistance </Text>
+          <Text>Turndown service </Text>
+          <Text>Wedding services</Text>
         </Box>
       </Box>
     </Box>
