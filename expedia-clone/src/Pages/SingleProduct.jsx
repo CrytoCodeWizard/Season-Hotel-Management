@@ -119,7 +119,9 @@ const SingleProduct = () => {
         </Box>
 
         <Box w="100%" h="auto" my="0.5rem" id="rooms" paddingTop="2rem">
-          <Rooms price1={currentHotel.price1} price2={currentHotel.price2} />
+          <Rooms
+            price1={Number(currentHotel.price2)}
+          />
         </Box>
         <Box w="100%" h="auto" my="0.5rem" id="locations" paddingTop="2rem">
           <SPLocation name={currentHotel.heading1} />

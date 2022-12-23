@@ -50,7 +50,7 @@ const Hotels = () => {
       title: "City Not Found.",
       description: "We're not present in this city.",
       status: "error",
-      duration: 3000,
+      duration: 1000,
       isClosable: true,
       position:"top",
     });

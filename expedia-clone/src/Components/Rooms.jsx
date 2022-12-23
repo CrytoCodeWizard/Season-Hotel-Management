@@ -1,9 +1,25 @@
-
-import { Box, Button, Divider, Grid, GridItem, HStack, Img, ListItem, OrderedList, Radio, RadioGroup, Stack, Text, UnorderedList, useDisclosure, VStack } from '@chakra-ui/react';
-import React, { useState } from 'react'
-import RoomImgSlider from './RoomImgSlider';
-import { BiArea } from "react-icons/bi"
-import { MdLocationCity,MdLocalParking } from "react-icons/md"
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  GridItem,
+  HStack,
+  Img,
+  ListItem,
+  OrderedList,
+  Radio,
+  RadioGroup,
+  Stack,
+  Text,
+  UnorderedList,
+  useDisclosure,
+  VStack,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import RoomImgSlider from "./RoomImgSlider";
+import { BiArea } from "react-icons/bi";
+import { MdLocationCity, MdLocalParking } from "react-icons/md";
 import { IoMdContacts } from "react-icons/io";
 import { FaBed } from "react-icons/fa";
 import {
@@ -15,22 +31,32 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import SPModal from './SPModal';
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import SPModal from "./SPModal";
 
+const Rooms = ({ price1 }) => {
+  let price = price1;
+  let p1 = price;
+  let p2 = p1 + 500;
+  let p3 = p1 + 5000;
+  let p4 = p1 + 2700;
+  let p5 = p1 + 3500;
+  let p6 = p1 + 2000;
 
-const Rooms = ({price1,price2}) => {
-  const num=() => {
-    const min = Math.ceil(3000);
-    const max = Math.floor(10000);
-    return Math.floor(Math.random() * (max - min) + min); 
-};
-  const price = num();
-  const p1 = num();
-  const p2 = num();
-  const p3 = num();
-  const p4 = num();
+  const [charge1, setcharge1] = useState("");
+  const [charge2, setcharge2] = useState("");
+  const [charge3, setcharge3] = useState("");
+  const [charge4, setcharge4] = useState("");
+  const [charge5, setcharge5] = useState("");
+  const [charge6, setcharge6] = useState("");
+  p1 = p1 + Number(charge1);
+  p2 = p2 + Number(charge2);
+  p3 = p3 + Number(charge3);
+  p4 = p4 + Number(charge4);
+  p5 = p5 + Number(charge5);
+  p6 = p6 + Number(charge6);
+
   return (
     <Box w="100%">
       <Box textAlign="initial" my="3%">
@@ -124,13 +150,21 @@ const Rooms = ({price1,price2}) => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup defaultValue="0" align="initial">
                 <Stack>
-                  <Radio value="1" size="sm">
+                  <Radio
+                    value="0"
+                    size="sm"
+                    onChange={(e) => setcharge1(e.target.value)}
+                  >
                     No extras + ₹0
                   </Radio>
 
-                  <Radio value="2" size="sm">
+                  <Radio
+                    value="500"
+                    size="sm"
+                    onChange={(e) => setcharge1(e.target.value)}
+                  >
                     Breakfast + ₹500
                   </Radio>
                 </Stack>
@@ -139,12 +173,12 @@ const Rooms = ({price1,price2}) => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                ₹{price1}
+                ₹{p1}
               </Text>
               <br />
               <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
-                <SPModal price1={price1} />
+                <SPModal price1={p1} />
               </HStack>
             </Box>
           </Box>
@@ -232,13 +266,21 @@ const Rooms = ({price1,price2}) => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup defaultValue="0" align="initial">
                 <Stack>
-                  <Radio value="1" size="sm">
+                  <Radio
+                    value="0"
+                    size="sm"
+                    onChange={(e) => setcharge2(e.target.value)}
+                  >
                     No extras + ₹0
                   </Radio>
 
-                  <Radio value="2" size="sm">
+                  <Radio
+                    value="500"
+                    size="sm"
+                    onChange={(e) => setcharge2(e.target.value)}
+                  >
                     Breakfast + ₹500
                   </Radio>
                 </Stack>
@@ -247,12 +289,12 @@ const Rooms = ({price1,price2}) => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                ₹{price}
+                ₹{p2}
               </Text>
               <br />
               <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
-                <SPModal price1={price} />
+                <SPModal price1={p2} />
               </HStack>
             </Box>
           </Box>
@@ -340,14 +382,22 @@ const Rooms = ({price1,price2}) => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup defaultValue="0" align="initial">
                 <Stack>
-                  <Radio value="1" size="sm">
+                  <Radio
+                    value="0"
+                    size="sm"
+                    onChange={(e) => setcharge3(e.target.value)}
+                  >
                     No extras + ₹0
                   </Radio>
 
-                  <Radio value="2" size="sm">
-                    Breakfast + ₹500
+                  <Radio
+                    value="700"
+                    size="sm"
+                    onChange={(e) => setcharge3(e.target.value)}
+                  >
+                    Breakfast + ₹700
                   </Radio>
                 </Stack>
               </RadioGroup>
@@ -355,12 +405,12 @@ const Rooms = ({price1,price2}) => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                ₹{p1}
+                ₹{p3}
               </Text>
               <br />
               <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
-                <SPModal price1={p1} />
+                <SPModal price1={p3} />
               </HStack>
             </Box>
           </Box>
@@ -448,14 +498,22 @@ const Rooms = ({price1,price2}) => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup defaultValue="0" align="initial">
                 <Stack>
-                  <Radio value="1" size="sm">
+                  <Radio
+                    value="0"
+                    size="sm"
+                    onChange={(e) => setcharge4(e.target.value)}
+                  >
                     No extras + ₹0
                   </Radio>
 
-                  <Radio value="2" size="sm">
-                    Breakfast + ₹500
+                  <Radio
+                    value="700"
+                    size="sm"
+                    onChange={(e) => setcharge4(e.target.value)}
+                  >
+                    Breakfast + ₹700
                   </Radio>
                 </Stack>
               </RadioGroup>
@@ -463,12 +521,12 @@ const Rooms = ({price1,price2}) => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                ₹{p2}
+                ₹{p4}
               </Text>
               <br />
               <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
-                <SPModal price1={p2} />
+                <SPModal price1={p4} />
               </HStack>
             </Box>
           </Box>
@@ -556,13 +614,21 @@ const Rooms = ({price1,price2}) => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup defaultValue="0" align="initial">
                 <Stack>
-                  <Radio value="1" size="sm">
+                  <Radio
+                    value="0"
+                    size="sm"
+                    onChange={(e) => setcharge5(e.target.value)}
+                  >
                     No extras + ₹0
                   </Radio>
 
-                  <Radio value="2" size="sm">
+                  <Radio
+                    value="500"
+                    size="sm"
+                    onChange={(e) => setcharge5(e.target.value)}
+                  >
                     Breakfast + ₹500
                   </Radio>
                 </Stack>
@@ -571,12 +637,12 @@ const Rooms = ({price1,price2}) => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                ₹{p3}
+                ₹{p5}
               </Text>
               <br />
               <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
-                <SPModal price1={p3} />
+                <SPModal price1={p5} />
               </HStack>
             </Box>
           </Box>
@@ -664,14 +730,22 @@ const Rooms = ({price1,price2}) => {
               <Text fontSize="0.9rem" fontWeight="500" align="initial">
                 Extras
               </Text>
-              <RadioGroup defaultValue="1" align="initial">
+              <RadioGroup defaultValue="0" align="initial">
                 <Stack>
-                  <Radio value="1" size="sm">
+                  <Radio
+                    value="0"
+                    size="sm"
+                    onChange={(e) => setcharge6(e.target.value)}
+                  >
                     No extras + ₹0
                   </Radio>
 
-                  <Radio value="2" size="sm">
-                    Breakfast + ₹500
+                  <Radio
+                    value="1000"
+                    size="sm"
+                    onChange={(e) => setcharge6(e.target.value)}
+                  >
+                    Breakfast + ₹1000
                   </Radio>
                 </Stack>
               </RadioGroup>
@@ -679,12 +753,12 @@ const Rooms = ({price1,price2}) => {
             <Divider my="0.7rem" />
             <Box>
               <Text fontWeight="700" fontSize="1.5rem" align="initial">
-                ₹{p4}
+                ₹{p6}
               </Text>
               <br />
               <HStack justifyContent="space-between">
                 <Text>Price Details</Text>
-                <SPModal price1={p4} />
+                <SPModal price1={p6} />
               </HStack>
             </Box>
           </Box>
