@@ -16,7 +16,7 @@ import {
   PopoverCloseButton,
   PopoverBody,
   Button,
-  useToast,
+  //useToast,
 } from "@chakra-ui/react";
 import { BsFillGeoAltFill } from "react-icons/bs";
 import { useState } from "react";
@@ -32,7 +32,7 @@ const SearchBar = () => {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [location, setLocation] = useState("");
   const initRef = useRef();
-  const toast = useToast();
+  //const toast = useToast();
   const Room = () => {
     return (
       <>
@@ -93,7 +93,7 @@ const SearchBar = () => {
   const navigate = useNavigate();
   const handleSearch = () => {
     const payload = {
-      location: location,
+      location: location.toLowerCase(),
       rooms: room,
       adults: adults,
       child: child,

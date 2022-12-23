@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, TabList,  Tab,  } from "@chakra-ui/react";
 import SPImages from "../Components/SPImages";
 import Overview from "../Components/Overview";
 import Rooms from "../Components/Rooms";
@@ -17,7 +17,7 @@ import { Link } from "@chakra-ui/react";
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+  //const isAuth = useSelector((state) => state.AuthReducer.isAuth);
   const [currentHotel, setCurrentHotel] = useState({});
   const hotels = useSelector((state) => state.AppReducer.hotels);
   useEffect(() => {
