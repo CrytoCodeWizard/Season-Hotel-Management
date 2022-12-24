@@ -14,6 +14,8 @@ import Trips from "./Trips";
 import List from "./List";
 import Rewards from "./Rewards";
 import Stays from './Stays'
+import Flights from "./Flights";
+
 
 const MainRoutes = () => {
   return (
@@ -32,6 +34,7 @@ const MainRoutes = () => {
         <Route path="/list" element={<List />} />
         <Route path="/rewards" element={<Rewards />} />
         <Route path="/stays" element={<Stays />} />
+        <Route path="/flights" element={<Flights />} />
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>

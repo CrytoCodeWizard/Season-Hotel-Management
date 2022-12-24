@@ -246,6 +246,7 @@ function Navbar() {
                       <MenuItem
                         _hover={{ color: hoverColor }}
                         icon={<MdOutlineFlight />}
+                        onClick={() => Navigate('/flights')}
                       >
                         Flights
                       </MenuItem>
