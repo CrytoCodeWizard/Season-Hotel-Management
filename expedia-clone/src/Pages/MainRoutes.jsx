@@ -13,6 +13,9 @@ import ConfirmBooking from "./ConfirmBooking";
 import Trips from "./Trips";
 import List from "./List";
 import Rewards from "./Rewards";
+import Holidays from "./Holidays";
+import Activities from "./Activities";
+import Deals from "./Deals";
 const MainRoutes = () => {
   return (
     <div>
@@ -29,6 +32,9 @@ const MainRoutes = () => {
         <Route path="/trips" element={<Trips />} />
         <Route path="/list" element={<List />} />
         <Route path="/rewards" element={<Rewards />} />
+        <Route path="/holidays" element={<Holidays />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/deals" element={<Deals />} />
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>
