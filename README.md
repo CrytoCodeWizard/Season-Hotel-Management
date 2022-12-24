@@ -6,7 +6,7 @@ This project is a clone of Expedia.com which is a hotel, flights and cabs bookin
 
 <br/>
 
-### Deployed site » https://allseasonhotels.vercel.app//
+### Deployed site » https://expedia-clone-five.vercel.app
 ### Original site » https://www.expedia.co.in/
 <br />
 
