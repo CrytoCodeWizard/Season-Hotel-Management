@@ -18,7 +18,7 @@ import SPPolicies from "../Components/SPPolicies";
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  //const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+
   const [currentHotel, setCurrentHotel] = useState({});
   const hotels = useSelector((state) => state.AppReducer.hotels);
   useEffect(() => {
@@ -34,6 +34,7 @@ const SingleProduct = () => {
       localStorage.setItem("singleHotel", JSON.stringify(singleHotel));
     }
   }, [id, hotels]);
+  const city = currentHotel.city;
 
   return (
     <Box bg="#F8F5F4" h="auto" w="100%">
@@ -133,7 +134,7 @@ const SingleProduct = () => {
           <Rooms price1={Number(currentHotel.price2)} />
         </Box>
         <Box w="100%" h="auto" my="0.5rem" id="locations" paddingTop="2rem">
-          <SPLocation name={currentHotel.heading1} />
+          <SPLocation name={currentHotel.heading1} city={city} />
         </Box>
         <Box w="100%" h="auto" my="0.5rem" id="amenities" paddingTop="2rem">
           <SPAmenities />

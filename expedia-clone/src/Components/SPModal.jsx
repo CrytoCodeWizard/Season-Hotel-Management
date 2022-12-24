@@ -40,7 +40,7 @@ const SPModal = ({ price1 }) => {
   const Navigate = useNavigate();
   const handlePayment = () => {
     if (isAuth) {
-      Navigate(`/hotels/${id}/checkout`);
+      Navigate(`/hotels/${id}/checkout`, { state: { roomPrice: price1 } });
     }else{
      toast({
       title: `Please LogIn first!`,
@@ -109,7 +109,7 @@ const SPModal = ({ price1 }) => {
                   ₹{price1}
                 </Text>
                 <Button
-                  onClick={handlePayment}
+                  onClick={()=>handlePayment()}
                   bg="#3662D8"
                   color="white"
                   _hover={{ bg: "#31087B" }}
