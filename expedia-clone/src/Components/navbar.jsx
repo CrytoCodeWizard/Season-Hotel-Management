@@ -260,16 +260,23 @@ function Navbar() {
                       <MenuItem
                         _hover={{ color: hoverColor }}
                         icon={<VscMultipleWindows />}
+                        onClick={() => Navigate("/holidays")}
                       >
                         Packages
                       </MenuItem>
                       <MenuItem
                         _hover={{ color: hoverColor }}
                         icon={<MdOutlineHolidayVillage />}
+                        onClick={() => Navigate("/activities")}
                       >
                         Holiday activities
                       </MenuItem>
-                      <MenuItem _hover={{ color: hoverColor }}>Deals</MenuItem>
+                      <MenuItem
+                        _hover={{ color: hoverColor }}
+                        onClick={() => Navigate("/deals")}
+                      >
+                        deals
+                      </MenuItem>
                       <MenuItem _hover={{ color: hoverColor }}>
                         Groups and meetings
                       </MenuItem>

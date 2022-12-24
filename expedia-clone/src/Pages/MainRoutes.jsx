@@ -13,9 +13,14 @@ import ConfirmBooking from "./ConfirmBooking";
 import Trips from "./Trips";
 import List from "./List";
 import Rewards from "./Rewards";
+
 import Stays from './Stays'
 import Flights from "./Flights";
 import Cars from './Cars'
+
+import Holidays from "./Holidays";
+import Activities from "./Activities";
+import Deals from "./Deals";
 
 const MainRoutes = () => {
   return (
@@ -33,9 +38,15 @@ const MainRoutes = () => {
         <Route path="/trips" element={<Trips />} />
         <Route path="/list" element={<List />} />
         <Route path="/rewards" element={<Rewards />} />
+
         <Route path="/stays" element={<Stays />} />
         <Route path="/flights" element={<Flights />} />
         <Route path="/cars" element={<Cars />} />
+
+        <Route path="/holidays" element={<Holidays />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/deals" element={<Deals />} />
+
         <Route path="*" element={<Pagenot />} />
       </Routes>
     </div>

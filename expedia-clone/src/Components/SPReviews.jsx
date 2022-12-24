@@ -258,25 +258,7 @@ const SPReviews = ({ review, rating }) => {
           </Text>
           <AiFillLike />
         </Box>
-        <Divider my="1rem" />
-        <Box w="100%">
-          <Text fontSize="1.3rem" fontWeight={"500"}>
-            3.0/5 Excellent
-          </Text>
-          <Text fontSize="0.9rem" fontWeight={"500"}>
-            Wasim
-          </Text>
-          <Text fontSize="0.9rem">29 Nov 2022</Text>
-          <br />
-
-          <Text fontSize="0.9rem">
-            he room was terrible, the TV was not working properly
-          </Text>
-          <Text fontSize="0.7rem" lineHeight={"1.9rem"}>
-            Stayed 1 nights in Nov 2022
-          </Text>
-          <AiFillLike />
-        </Box>
+        
       </Box>
     </Box>
   );
