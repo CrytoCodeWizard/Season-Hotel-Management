@@ -253,6 +253,7 @@ function Navbar() {
                       <MenuItem
                         _hover={{ color: hoverColor }}
                         icon={<FaCarSide />}
+                        onClick={() => Navigate('/cars')}
                       >
                         Cars
                       </MenuItem>
