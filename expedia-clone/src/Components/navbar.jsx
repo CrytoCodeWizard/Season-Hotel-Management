@@ -35,6 +35,7 @@ import {
   useMediaQuery,
   useToast,
 } from "@chakra-ui/react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { SIGNOUT } from "../Redux/AuthContext/actionTypes";
@@ -46,6 +47,7 @@ function Navbar() {
   const hoverColor = "#3182ce";
   const dispatch = useDispatch();
   const toast = useToast();
+
 
   const { userData, isAuth } = useSelector((state) => {
     return {
@@ -235,6 +237,7 @@ function Navbar() {
 
                     <MenuList>
                       <MenuItem
+                        onClick={() => Navigate('/stays')}
                         _hover={{ color: hoverColor }}
                         icon={<BsBuilding />}
                       >
@@ -243,12 +246,14 @@ function Navbar() {
                       <MenuItem
                         _hover={{ color: hoverColor }}
                         icon={<MdOutlineFlight />}
+                        onClick={() => Navigate('/flights')}
                       >
                         Flights
                       </MenuItem>
                       <MenuItem
                         _hover={{ color: hoverColor }}
                         icon={<FaCarSide />}
+                        onClick={() => Navigate('/cars')}
                       >
                         Cars
                       </MenuItem>
