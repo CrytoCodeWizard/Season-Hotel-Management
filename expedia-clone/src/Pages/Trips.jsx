@@ -87,7 +87,7 @@ function Trips() {
                         <Td>{e.rooms}</Td>
                         <Td>{e.adults}</Td>
                         <Td>{e.child}</Td>
-                        <Td>{e.price1}</Td>
+                        <Td>{e.amount}</Td>
                         <Td>{e.checkInDate}</Td>
                         <Td>{e.checkOutDate}</Td>
                         <Td>123456789{e.id}</Td>

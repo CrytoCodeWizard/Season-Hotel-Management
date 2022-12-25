@@ -120,7 +120,7 @@ const Rooms = ({ price1 }) => {
               colorScheme="blackAlpha"
               my="0.7rem"
             />
-            <Box fontSize="0.90rem">
+            <Box fontSize="0.9rem">
               <Text fontSize="0.95rem" fontWeight="500" align="initial">
                 Cancellation policy
               </Text>
@@ -134,7 +134,7 @@ const Rooms = ({ price1 }) => {
                       justifyContent="space-between"
                       marginLeft="8px"
                     >
-                      <Box>Fully refundable before 24 Dec</Box>
+                      <Box>Fully refundable </Box>
                       <Box w="31px" fontWeight="bold">
                         + ₹0
                       </Box>
@@ -258,7 +258,7 @@ const Rooms = ({ price1 }) => {
               colorScheme="blackAlpha"
               my="0.7rem"
             />
-            <Box fontSize="0.90rem">
+            <Box fontSize="0.9rem">
               <Text fontSize="0.95rem" fontWeight="500" align="initial">
                 Cancellation policy
               </Text>
@@ -272,7 +272,7 @@ const Rooms = ({ price1 }) => {
                       justifyContent="space-between"
                       marginLeft="8px"
                     >
-                      <Box>Fully refundable before 24 Dec</Box>
+                      <Box>Fully refundable </Box>
                       <Box w="31px" fontWeight="bold">
                         + ₹0
                       </Box>
@@ -396,7 +396,7 @@ const Rooms = ({ price1 }) => {
               colorScheme="blackAlpha"
               my="0.7rem"
             />
-            <Box fontSize="0.90rem">
+            <Box fontSize="0.9rem">
               <Text fontSize="0.95rem" fontWeight="500" align="initial">
                 Cancellation policy
               </Text>
@@ -410,7 +410,7 @@ const Rooms = ({ price1 }) => {
                       justifyContent="space-between"
                       marginLeft="8px"
                     >
-                      <Box>Fully refundable before 24 Dec</Box>
+                      <Box>Fully refundable </Box>
                       <Box w="31px" fontWeight="bold">
                         + ₹0
                       </Box>
@@ -534,7 +534,7 @@ const Rooms = ({ price1 }) => {
               colorScheme="blackAlpha"
               my="0.7rem"
             />
-            <Box fontSize="0.90rem">
+            <Box fontSize="0.9rem">
               <Text fontSize="0.95rem" fontWeight="500" align="initial">
                 Cancellation policy
               </Text>
@@ -548,7 +548,7 @@ const Rooms = ({ price1 }) => {
                       justifyContent="space-between"
                       marginLeft="8px"
                     >
-                      <Box>Fully refundable before 24 Dec</Box>
+                      <Box>Fully refundable </Box>
                       <Box w="31px" fontWeight="bold">
                         + ₹0
                       </Box>
@@ -672,7 +672,7 @@ const Rooms = ({ price1 }) => {
               colorScheme="blackAlpha"
               my="0.7rem"
             />
-            <Box fontSize="0.90rem">
+            <Box fontSize="0.9rem">
               <Text fontSize="0.95rem" fontWeight="500" align="initial">
                 Cancellation policy
               </Text>
@@ -686,7 +686,7 @@ const Rooms = ({ price1 }) => {
                       justifyContent="space-between"
                       marginLeft="8px"
                     >
-                      <Box>Fully refundable before 24 Dec</Box>
+                      <Box>Fully refundable </Box>
                       <Box w="31px" fontWeight="bold">
                         + ₹0
                       </Box>
@@ -810,7 +810,7 @@ const Rooms = ({ price1 }) => {
               colorScheme="blackAlpha"
               my="0.7rem"
             />
-            <Box fontSize="0.90rem">
+            <Box fontSize="0.9rem">
               <Text fontSize="0.95rem" fontWeight="500" align="initial">
                 Cancellation policy
               </Text>
@@ -824,7 +824,7 @@ const Rooms = ({ price1 }) => {
                       justifyContent="space-between"
                       marginLeft="8px"
                     >
-                      <Box>Fully refundable before 24 Dec</Box>
+                      <Box>Fully refundable </Box>
                       <Box w="31px" fontWeight="bold">
                         + ₹0
                       </Box>

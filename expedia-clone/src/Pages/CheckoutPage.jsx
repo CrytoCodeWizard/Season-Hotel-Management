@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { BsFillCloudCheckFill } from "react-icons/bs";
 import { useSelector, shallowEqual } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const CheckoutPage = () => {
@@ -24,12 +24,14 @@ const CheckoutPage = () => {
   const userData = useSelector((state) => state.AuthReducer.userData);
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
   const navigate = useNavigate();
+  
+const location = useLocation();
+const room_Price = location.state.roomPrice;
   const [localHotel, setLocalHotel] = useState({});
   // const [ordered, setOrdered] = useState(false);
   const currentHotel = JSON.parse(localStorage.getItem("singleHotel"));
-  const price = Number(currentHotel.price1.split(",").join("")) * rooms;
-  const tax = (price * 18) / 100;
-  const total = tax + price;
+  const price = room_Price * rooms;
+  const tax = Math.round((price * 18) / 100);
   const { checkInDate, checkOutDate, child } = useSelector((store) => {
     return {
       checkInDate: store.AppReducer.checkInDate,
@@ -37,7 +39,12 @@ const CheckoutPage = () => {
       child: store.AppReducer.child,
     };
   }, shallowEqual);
-
+  var date1 = new Date(checkInDate);
+  var date2 = new Date(checkOutDate);
+  var Difference_In_Time = date2.getTime() - date1.getTime();
+  var nights = Difference_In_Time / (1000 * 3600 * 24);
+  const final =  price  *  (nights || 1) ;
+  const total = tax + final;
   useEffect(() => {
     setLocalHotel({
       ...currentHotel,
@@ -46,6 +53,7 @@ const CheckoutPage = () => {
       ["rooms"]: rooms,
       ["adults"]: adults,
       ["child"]: child,
+      ["amount"]:total,
     });
   }, []);
 
@@ -465,25 +473,30 @@ const CheckoutPage = () => {
                   src="https://images.trvl-media.com/hotels/2000000/1360000/1351900/1351876/1ac59945_l.jpg"
                 />
                 <Box margin={"25px"}>
-                  <Text>4.8/5 Exceptional (997 reviews)</Text>
+                  <Text>
+                    {currentHotel.rating} {currentHotel.review} (997 reviews)
+                  </Text>
                   <Text marginTop={"10px"} fontSize={"13px"}>
-                    Guests rated this property 4.8/5 for cleanliness
+                    Guests rated this property {currentHotel.rating} for
+                    cleanliness
                   </Text>
                   <Text marginTop={"15px"}>
                     {rooms} Room: Superior Room City View
                   </Text>
-                  <Text fontSize={"12px"}>Check-in: Thu, 24 Nov</Text>
-                  <Text fontSize={"12px"}>Check-out: Fri, 25 Nov</Text>
-                  <Text fontSize={"12px"}>1-night stay</Text>
+                  <Text fontSize={"12px"}>Check-in: {checkInDate}</Text>
+                  <Text fontSize={"12px"}>Check-out: {checkOutDate}</Text>
+                  <Text fontSize={"12px"}>{nights || 1}-night stay</Text>
                 </Box>
 
                 <Box m="25px" marginTop={"30px"}>
                   <Text fontWeight={"bold"}>Price details</Text>
                   <hr />
                   <Flex marginTop="20px">
-                    <Box>{rooms || 1} room x 1 night</Box>
+                    <Box>
+                      {rooms || 1} room x {nights ||1} night
+                    </Box>
                     <Spacer />
-                    <Box>₹{price}</Box>
+                    <Box>₹{final}</Box>
                   </Flex>
                   <Flex marginTop="20px">
                     <Box>Taxes and service fees</Box>
