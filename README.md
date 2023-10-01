@@ -1,17 +1,3 @@
-# _average-collar-3069_
-# **AllSeasonHotels**
-This project is a clone of Expedia.com which is a hotel, flights and cabs booking website, It is a group project which is done by 5 members and was completed in the duration of 5 days
- 
-
-
-<br/>
-
-### Deployed site » https://expedia-clone-five.vercel.app
-### Original site » https://www.expedia.co.in/
-<br />
-
-
-
 ## Tech Stacks
 <p>
          <img src="https://img.shields.io/badge/React-282c34?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
@@ -65,15 +51,6 @@ This project is a clone of Expedia.com which is a hotel, flights and cabs bookin
    - ###### Checkout Page :
 ![Screenshot (29)](https://user-images.githubusercontent.com/96099134/209419937-fd53919e-d136-404b-8fb2-abd0323505e1.png)
 
-
-
-## Contributors
-
-   - <a href="https://github.com/Dhanraj4198"> Dhanraj Jagtap </a>
-   - <a href="https://github.com/Aniruddha8787"> Aniruddha Nalage </a>
-   - <a href="https://github.com/SunilHooda"> Sunil Hooda </a>
-   - <a href="https://github.com/RohitD100"> Rohit Dorage </a>
-   - <a href="https://github.com/Aayush983"> Ayush Kumar </a>
 
 
 
